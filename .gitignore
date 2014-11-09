@@ -6,6 +6,7 @@
 *.user
 *.sln.docstates
 
+ComputerArch/*.sln
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
