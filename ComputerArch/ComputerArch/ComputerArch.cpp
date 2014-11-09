@@ -1,7 +1,10 @@
 // ComputerArch.cpp : Defines the entry point for the console application.
 //
 
+<<<<<<< HEAD
 //#include "stdafx.h"
+=======
+>>>>>>> origin/master
 #include <iostream>
 
 using namespace std;
