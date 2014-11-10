@@ -48,6 +48,16 @@ RegisterFile* RegisterFile::setWd(std::bitset<4> wd)
     return this;
 }
 
+bool RegisterFile::getRegWrite()
+{
+    return this->regWrite;
+}
+
+bool RegisterFile::getRegRead()
+{
+    return this->regRead;
+}
+
 std::bitset<4> RegisterFile::getRead1()
 {
     return this->read1;

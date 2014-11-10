@@ -19,6 +19,9 @@ class RegisterFile {
 
         RegisterFile* setWd(std::bitset<4> wd);
 
+        bool getRegWrite();
+        bool getRegRead();
+
         std::bitset<4> getRead1();
         std::bitset<4> getRead2();
 
