@@ -1,0 +1,35 @@
+#ifndef REGISTERFILE_H
+#define REGISTERFILE_H
+
+#include <iostream>
+#include <bitset>
+
+class RegisterFile {
+
+    public:
+        RegisterFile();
+        ~RegisterFile();
+
+        RegisterFile* setRs(std::bitset<4> rs);
+        RegisterFile* setRd(std::bitset<4> rd);
+        RegisterFile* setRt(std::bitset<4> rt);
+
+        RegisterFile* setWd(std::bitset<4> wd);
+
+        std::bitset<4> getRead1();
+        std::bitset<4> getRead2();
+
+
+    private:
+        
+        std::bitset<4> rs;
+        std::bitset<4> rd;
+        std::bitset<4> rt;
+
+        std::bitset<4> wd;
+
+        std::bitset<4> read1;
+        std::bitset<4> read2;
+};
+
+#endif
