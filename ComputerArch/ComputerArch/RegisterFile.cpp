@@ -12,6 +12,18 @@ RegisterFile::~RegisterFile()
     delete this;
 }
 
+RegisterFile* RegisterFile::setRegWrite(bool regWrite)
+{
+    this->regWrite = regWrite;
+    return this;
+}
+
+RegisterFile* RegisterFile::setRegRead(bool regRead)
+{
+    this->regRead = regRead;
+    return this;
+}
+
 RegisterFile* RegisterFile::setRs(std::bitset<4> rs)
 {
     this->rs = rs;

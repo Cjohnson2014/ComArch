@@ -10,6 +10,9 @@ class RegisterFile {
         RegisterFile();
         ~RegisterFile();
 
+        RegisterFile* setRegWrite(bool regWrite);
+        RegisterFile* setRegRead(bool regRead);
+
         RegisterFile* setRs(std::bitset<4> rs);
         RegisterFile* setRd(std::bitset<4> rd);
         RegisterFile* setRt(std::bitset<4> rt);
@@ -21,7 +24,10 @@ class RegisterFile {
 
 
     private:
-        
+
+        bool regWrite;
+        bool regRead;
+
         std::bitset<4> rs;
         std::bitset<4> rd;
         std::bitset<4> rt;
