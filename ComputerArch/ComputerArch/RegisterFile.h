@@ -7,17 +7,18 @@
 class RegisterFile {
 
     public:
+
         RegisterFile();
         ~RegisterFile();
 
-        RegisterFile* setRegWrite(bool regWrite);
-        RegisterFile* setRegRead(bool regRead);
+        RegisterFile setRegWrite(bool regWrite);
+        RegisterFile setRegRead(bool regRead);
 
-        RegisterFile* setRs(std::bitset<4> rs);
-        RegisterFile* setRd(std::bitset<4> rd);
-        RegisterFile* setRt(std::bitset<4> rt);
+        RegisterFile setRs(std::bitset<4> rs);
+        RegisterFile setRd(std::bitset<4> rd);
+        RegisterFile setRt(std::bitset<4> rt);
 
-        RegisterFile* setWd(std::bitset<4> wd);
+        RegisterFile setWd(std::bitset<4> wd);
 
         bool getRegWrite();
         bool getRegRead();
