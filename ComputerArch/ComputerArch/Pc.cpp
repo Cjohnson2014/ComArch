@@ -6,6 +6,10 @@ Pc::Pc(){
 	current=std::bitset<16>(0);
 }
 
-Pc::get(){
+Pc::~Pc(){
+
+}
+
+std::bitset<16> Pc::get(){
 	return current;
 }
