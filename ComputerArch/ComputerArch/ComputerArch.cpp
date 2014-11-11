@@ -6,7 +6,9 @@
 using namespace std;
 int main(int argc, char* argv[])
 {
+	char a;
 	cout<< "YO\n";
-	return 0;
+	cin>>a;
+	//return 0;
 }
 
