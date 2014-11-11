@@ -5,7 +5,10 @@
 Pc::Pc(){
 	current=std::bitset<16>(0);
 }
-
-Pc::get(){
+void Pc::set(std::bitset<16>input)
+{
+     current=input;
+}
+std::bitset<16>Pc::get(){
 	return current;
 }
