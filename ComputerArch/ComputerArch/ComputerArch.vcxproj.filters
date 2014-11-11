@@ -21,5 +21,37 @@
     <ClCompile Include="ComputerArch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Pc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mux.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Adder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Adder4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="And.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Pc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mux.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Adder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Adder4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="And.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

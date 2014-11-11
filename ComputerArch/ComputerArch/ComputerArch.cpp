@@ -5,6 +5,8 @@
 #include <string>
 #include <bitset>
 
+#include "Pc.h"
+
 #define ARRAY_SIZE 2
 
 using namespace std;
@@ -16,12 +18,11 @@ bitset<16> machinecode[ARRAY_SIZE] = {
 
 int main(int argc, char* argv[])
 {
-<<<<<<< HEAD
 	char a;
 	cout<< "YO\n";
 	cin>>a;
 	//return 0;
-=======
+
     // printing out values just so I don't get a
     // unused variable warning (bugging me)
     cout << "arg count: " << argc << endl;
@@ -35,6 +36,5 @@ int main(int argc, char* argv[])
     }
 
     return 0;
->>>>>>> origin/master
 }
 
