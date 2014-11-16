@@ -6,13 +6,13 @@
 class IFIDBuffer {
 
     public:
-        std::bitset<16> getProgramCounter();
+        int getProgramCounter();
         std::bitset<16> getInstructionMemory();
-        void setProgramCounter(std::bitset<16> pc);
+        void setProgramCounter(int pc);
         void setInstructionMemory(std::bitset<16> im);
 
     private:
-        std::bitset<16> programCounter;
+        int programCounter;
         std::bitset<16> instructionMemory;
 
 };

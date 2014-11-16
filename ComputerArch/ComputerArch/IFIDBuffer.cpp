@@ -2,9 +2,9 @@
 
 #include <bitset>
 
-std::bitset<16> IFIDBuffer::getProgramCounter()
+int IFIDBuffer::getProgramCounter()
 {
-    return this->instructionMemory;
+    return this->programCounter;
 }
 
 std::bitset<16> IFIDBuffer::getInstructionMemory()
@@ -12,7 +12,7 @@ std::bitset<16> IFIDBuffer::getInstructionMemory()
     return this->instructionMemory;
 }
 
-void IFIDBuffer::setProgramCounter(std::bitset<16> pc)
+void IFIDBuffer::setProgramCounter(int pc)
 {
     this->programCounter = pc;
 }
