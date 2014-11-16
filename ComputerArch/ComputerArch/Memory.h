@@ -10,11 +10,11 @@ class Memory {
         Memory();
         ~Memory();
 
-        Memory* setMemWrite(bool MemWrite);
-        Memory* setMemRead(bool MemRead);
+        Memory setMemWrite(bool MemWrite);
+        Memory setMemRead(bool MemRead);
 
-        Memory* setAddress(std::bitset<16> address);
-        Memory* setWriteDataMem(std::bitset<16> writeDataMem);
+        Memory setAddress(std::bitset<16> address);
+        Memory setWriteDataMem(std::bitset<16> writeDataMem);
 
         bool getMemWrite();
         bool getMemRead();
