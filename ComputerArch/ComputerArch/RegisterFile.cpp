@@ -17,13 +17,13 @@ RegisterFile RegisterFile::setRegWrite(bool regWrite)
     this->regWrite = regWrite;
     return *this;
 }
-
+/*
 RegisterFile RegisterFile::setRegRead(bool regRead)
 {
     this->regRead = regRead;
     return *this;
 }
-
+*/
 RegisterFile RegisterFile::setRs(std::bitset<4> rs)
 {
     this->rs = rs;
@@ -52,18 +52,18 @@ bool RegisterFile::getRegWrite()
 {
     return this->regWrite;
 }
-
+/*
 bool RegisterFile::getRegRead()
 {
     return this->regRead;
 }
-
-std::bitset<4> RegisterFile::getRead1()
+*/
+std::bitset<16> RegisterFile::getRead1()
 {
     return this->read1;
 }
 
-std::bitset<4> RegisterFile::getRead2()
+std::bitset<16> RegisterFile::getRead2()
 {
     return this->read2;
 }

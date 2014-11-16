@@ -21,16 +21,16 @@ class RegisterFile {
         RegisterFile setWd(std::bitset<4> wd);
 
         bool getRegWrite();
-        bool getRegRead();
+        // bool getRegRead();
 
-        std::bitset<4> getRead1();
-        std::bitset<4> getRead2();
+        std::bitset<16> getRead1();
+        std::bitset<16> getRead2();
 
 
     private:
 
         bool regWrite;
-        bool regRead;
+        // bool regRead;
 
         std::bitset<4> rs;
         std::bitset<4> rd;
@@ -38,8 +38,8 @@ class RegisterFile {
 
         std::bitset<4> wd;
 
-        std::bitset<4> read1;
-        std::bitset<4> read2;
+        std::bitset<16> read1;
+        std::bitset<16> read2;
 };
 
 #endif
