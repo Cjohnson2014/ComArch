@@ -11,7 +11,7 @@ class RegisterFile {
         RegisterFile();
         ~RegisterFile();
 
-        RegisterFile setRegWrite(bool regWrite);
+        // RegisterFile setRegWrite(bool regWrite);
         RegisterFile setRegRead(bool regRead);
 
         RegisterFile setRs(std::bitset<4> rs);
