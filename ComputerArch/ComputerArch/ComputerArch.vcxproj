@@ -83,15 +83,21 @@
     <ClCompile Include="Adder4.cpp" />
     <ClCompile Include="And.cpp" />
     <ClCompile Include="ComputerArch.cpp" />
+    <ClCompile Include="IdExBuff.cpp" />
     <ClCompile Include="Mux.cpp" />
     <ClCompile Include="Pc.cpp" />
+    <ClCompile Include="RegisterFile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adder.h" />
     <ClInclude Include="Adder4.h" />
+    <ClInclude Include="ALU.h" />
     <ClInclude Include="And.h" />
+    <ClInclude Include="IdExBuff.h" />
+    <ClInclude Include="Memory.h" />
     <ClInclude Include="Mux.h" />
     <ClInclude Include="Pc.h" />
+    <ClInclude Include="RegisterFile.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

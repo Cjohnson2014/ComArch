@@ -39,7 +39,10 @@ int main(int argc, char* argv[])
 
     for (int i = 0; i < ARRAY_SIZE; i++)
     {
-        cout << machinecode[i] << endl;
+		Pc Pc;
+		Pc.set(machinecode[i]);
+		cout << "Current Instruction"<< Pc.get() << "/n";
+
         // read these files into memory.
         // probably wont need a loop
     }
