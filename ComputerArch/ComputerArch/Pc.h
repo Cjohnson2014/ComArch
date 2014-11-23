@@ -10,7 +10,7 @@ public:
 	~Pc();
 
 	
-	void set(int input);
+	void set(std::bitset<16> input);
 	int get();
 	
 
