@@ -1,16 +1,16 @@
 #include "Adder4.h"
 
-adder4::adder4()
+Adder4::adder4()
 {
 	
 }
 
-adder4::~adder4()
+Adder4::~adder4()
 {
 	delete this;
 }
 
-std::bitset<16> get()
+std::bitset<16> Adder4::get()
 {
-	return addValue;
+	return this->addVal;
 }
