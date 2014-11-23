@@ -1,5 +1,5 @@
 #include "RegisterFile.h"
-
+#include <iostream>
 #include <bitset>
 
 RegisterFile::RegisterFile()
@@ -10,6 +10,11 @@ RegisterFile::RegisterFile()
 RegisterFile::~RegisterFile()
 {
     delete this;
+}
+
+void RegisterFile::setRF(std::bitset<16> rf)
+{
+    this->rf = rf;
 }
 
 RegisterFile RegisterFile::setRegWrite(bool regWrite)

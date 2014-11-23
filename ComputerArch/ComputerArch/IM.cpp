@@ -1,14 +1,15 @@
 #include "IM.h"
 
 #include <bitset>
+#include <iostream>
 
 const std::bitset<16> IM::machinecode[ARRAY_SIZE] = {
     std::bitset<16>(std::string("0101000001110001"))
 };
 
-IM::IM()
+IM::IM(std::bitset<16> init)
 {
-    // nothing here yet
+    this->readDataIM = init;
 }
 
 IM::~IM()
@@ -22,10 +23,10 @@ IM IM::setIMRead(bool IMRead)
     return *this;
 }
 
-IM IM::setIMAddress(std::bitset<16> IMaddress)
+void IM::setIMAddress(int IMaddress)
 {
     this->IMaddress = IMaddress;
-    return *this;
+    this->readDataIM = machinecode[IMaddress];
 }
 
 bool IM::getIMRead()

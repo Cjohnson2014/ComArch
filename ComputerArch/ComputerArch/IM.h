@@ -13,12 +13,12 @@ class IM {
 
         static const std::bitset<16> machinecode[ARRAY_SIZE];
 
-        IM();
+        IM(std::bitset<16> init);
         ~IM();
 
         IM setIMRead(bool IMRead);
 
-        IM setIMAddress(std::bitset<16> IMaddress);
+        void setIMAddress(int IMaddress);
 
         bool getIMRead();
 
@@ -28,7 +28,7 @@ class IM {
 
         bool IMRead;
 
-        std::bitset<16> IMaddress;
+        int IMaddress;
 
         std::bitset<16> readDataIM;
 };

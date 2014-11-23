@@ -11,6 +11,8 @@ class RegisterFile {
         RegisterFile();
         ~RegisterFile();
 
+        void setRF(std::bitset<16> rf);
+
         RegisterFile setRegWrite(bool regWrite);
         // RegisterFile setRegRead(bool regRead);
 
@@ -31,6 +33,8 @@ class RegisterFile {
 
         bool regWrite;
         // bool regRead;
+
+        std::bitset<16> rf;
 
         std::bitset<4> rs;
         std::bitset<4> rd;
