@@ -29,7 +29,7 @@ RegisterFile RegisterFile::setRs(std::bitset<4> rs)
     this->rs = rs;
     return *this;
 }
-n
+
 RegisterFile RegisterFile::setRd(std::bitset<4> rd)
 {
     this->rd = rd;

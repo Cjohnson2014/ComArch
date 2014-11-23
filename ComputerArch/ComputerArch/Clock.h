@@ -10,14 +10,14 @@ class Clock {
             HI = 1
         };
 
-        static void tick(unsigned long ms);
-        static void toggleEdge();
-        static void setEdge(Edge edge);
-        static Edge getEdge();
+        void tick(unsigned long ms);
+        void toggleEdge();
+        void setEdge(Edge edge);
+        Edge getEdge();
 
     private:
 
-        static Edge currentEdge;
+        Edge currentEdge;
 
 };
 
