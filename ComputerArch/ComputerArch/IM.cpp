@@ -2,6 +2,10 @@
 
 #include <bitset>
 
+const std::bitset<16> IM::machinecode[ARRAY_SIZE] = {
+    std::bitset<16>(std::string("0101000001110001"))
+};
+
 IM::IM()
 {
     // nothing here yet

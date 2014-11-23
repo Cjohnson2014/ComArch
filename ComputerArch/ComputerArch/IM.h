@@ -3,10 +3,16 @@
 
 #include <iostream>
 #include <bitset>
+#include <string>
+
+#define ARRAY_SIZE 1
 
 class IM {
 
     public:
+
+        static const std::bitset<16> machinecode[ARRAY_SIZE];
+
         IM();
         ~IM();
 
