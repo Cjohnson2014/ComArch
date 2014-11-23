@@ -26,5 +26,5 @@ Mux::Mux()
 
 Mux::~Mux()
 {
-	delete this
+	delete this;
 }
