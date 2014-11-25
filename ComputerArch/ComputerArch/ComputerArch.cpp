@@ -23,28 +23,29 @@ int main(int argc, char* argv[])
     cout << "arg count: " << argc << endl;
     cout << "arg vals: " << argv << endl;
 
-    int i = 0;
+    int i = -1;
 
     Pc Pc;
     Pc.set(i);
     IM *im = new IM(bitset<16>(string("0000000000000000")));
     RegisterFile *rf = new RegisterFile();
-    
-    while (true)
-    {
-        if (im->getReadDataIM() != bitset<16>(string("0000000000000000")))
-        {
-            break;
-        }
 
-        rf->setRF(im->getReadDataIM());
+    for (int j = 0; j < 3; j++)
+    {
+        rf->set(im->getReadDataIM());
         im->setIMAddress(Pc.get()); 
-        Pc.set(i++);
+        Pc.set(++i);
 
         /***** WHATS HAPPENING EACH TIME **********/
 
+        cout << endl;
+        cout << "*********************" << endl;
         cout << "Program Counter: " << Pc.get() << endl;
         cout << "Instruction Memory: " << im->getReadDataIM() << endl;
+        cout << "Register File OpCode: " << rf->getOpCode() << endl;
+        cout << "Register File RS: " << rf->getRs() << endl;
+        cout << "Register File RD: " << rf->getRd() << endl;
+        cout << "Register File RT: " << rf->getRt() << endl;
     }
 
     

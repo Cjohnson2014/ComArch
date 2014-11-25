@@ -11,7 +11,7 @@ class RegisterFile {
         RegisterFile();
         ~RegisterFile();
 
-        void setRF(std::bitset<16> rf);
+        void set(std::bitset<16> rf);
 
         RegisterFile setRegWrite(bool regWrite);
         // RegisterFile setRegRead(bool regRead);
@@ -19,6 +19,11 @@ class RegisterFile {
         RegisterFile setRs(std::bitset<4> rs);
         RegisterFile setRd(std::bitset<4> rd);
         RegisterFile setRt(std::bitset<4> rt);
+
+        std::bitset<4> getOpCode();
+        std::bitset<4> getRs();
+        std::bitset<4> getRd();
+        std::bitset<4> getRt();
 
         RegisterFile setWd(std::bitset<4> wd);
 
@@ -36,6 +41,7 @@ class RegisterFile {
 
         std::bitset<16> rf;
 
+        std::bitset<4> opCode;
         std::bitset<4> rs;
         std::bitset<4> rd;
         std::bitset<4> rt;

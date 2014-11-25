@@ -25,8 +25,11 @@ IM IM::setIMRead(bool IMRead)
 
 void IM::setIMAddress(int IMaddress)
 {
-    this->IMaddress = IMaddress;
-    this->readDataIM = machinecode[IMaddress];
+    if (IMaddress >= 0)
+    {
+        this->IMaddress = IMaddress;
+        this->readDataIM = machinecode[IMaddress];
+    }
 }
 
 bool IM::getIMRead()

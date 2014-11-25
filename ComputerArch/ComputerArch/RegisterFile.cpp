@@ -12,9 +12,38 @@ RegisterFile::~RegisterFile()
     delete this;
 }
 
-void RegisterFile::setRF(std::bitset<16> rf)
+void RegisterFile::set(std::bitset<16> rf)
 {
     this->rf = rf;
+
+    std::bitset<4> opCode;
+    opCode[0] = rf[0];
+    opCode[1] = rf[1];
+    opCode[2] = rf[2];
+    opCode[3] = rf[3];
+
+    std::bitset<4> rs;
+    rs[0] = rf[4];
+    rs[1] = rf[5];
+    rs[2] = rf[6];
+    rs[3] = rf[7];
+
+    std::bitset<4> rt;
+    rt[0] = rf[8];
+    rt[1] = rf[9];
+    rt[2] = rf[10];
+    rt[3] = rf[11];
+
+    std::bitset<4> rd;
+    rd[0] = rf[12];
+    rd[1] = rf[13];
+    rd[2] = rf[14];
+    rd[3] = rf[15];
+
+    this->opCode = opCode;
+    this->rs = rs;
+    this->rt = rt;
+    this->rd = rd;
 }
 
 RegisterFile RegisterFile::setRegWrite(bool regWrite)
@@ -29,6 +58,27 @@ RegisterFile RegisterFile::setRegRead(bool regRead)
     return *this;
 }
 */
+
+std::bitset<4> RegisterFile::getOpCode()
+{
+    return this->opCode;
+}
+
+std::bitset<4> RegisterFile::getRs()
+{
+    return this->rs;
+}
+
+std::bitset<4> RegisterFile::getRd()
+{
+    return this->rd;
+}
+
+std::bitset<4> RegisterFile::getRt()
+{
+    return this->rt;
+}
+
 RegisterFile RegisterFile::setRs(std::bitset<4> rs)
 {
     this->rs = rs;
