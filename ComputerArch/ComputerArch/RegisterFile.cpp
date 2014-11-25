@@ -17,10 +17,10 @@ void RegisterFile::set(std::bitset<16> rf)
     this->rf = rf;
 
     std::bitset<4> opCode;
-    opCode[0] = rf[0];
-    opCode[1] = rf[1];
-    opCode[2] = rf[2];
-    opCode[3] = rf[3];
+    opCode[0] = rf[12];
+    opCode[1] = rf[13];
+    opCode[2] = rf[14];
+    opCode[3] = rf[15];
 
     std::bitset<4> rs;
     rs[0] = rf[4];
@@ -35,15 +35,27 @@ void RegisterFile::set(std::bitset<16> rf)
     rt[3] = rf[11];
 
     std::bitset<4> rd;
-    rd[0] = rf[12];
-    rd[1] = rf[13];
-    rd[2] = rf[14];
-    rd[3] = rf[15];
+    rd[0] = rf[0];
+    rd[1] = rf[1];
+    rd[2] = rf[2];
+    rd[3] = rf[3];
+
+    std::bitset<16> signExtend;
+    signExtend[0] = rf[0];
+    signExtend[1] = rf[1];
+    signExtend[2] = rf[2];
+    signExtend[3] = rf[3];
+
+    for (int i = 15; i > 3; i--)
+    {
+        signExtend[i] = std::bitset<1>(std::string("0"))[0];
+    }
 
     this->opCode = opCode;
     this->rs = rs;
     this->rt = rt;
     this->rd = rd;
+    this->signExtend = signExtend;
 }
 
 RegisterFile RegisterFile::setRegWrite(bool regWrite)
@@ -77,6 +89,11 @@ std::bitset<4> RegisterFile::getRd()
 std::bitset<4> RegisterFile::getRt()
 {
     return this->rt;
+}
+
+std::bitset<16> RegisterFile::getSignExtend()
+{
+    return this->signExtend;
 }
 
 RegisterFile RegisterFile::setRs(std::bitset<4> rs)

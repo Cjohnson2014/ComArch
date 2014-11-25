@@ -25,6 +25,8 @@ class RegisterFile {
         std::bitset<4> getRd();
         std::bitset<4> getRt();
 
+        std::bitset<16> getSignExtend();
+
         RegisterFile setWd(std::bitset<4> wd);
 
         bool getRegWrite();
@@ -45,6 +47,8 @@ class RegisterFile {
         std::bitset<4> rs;
         std::bitset<4> rd;
         std::bitset<4> rt;
+
+        std::bitset<16> signExtend;
 
         std::bitset<4> wd;
 

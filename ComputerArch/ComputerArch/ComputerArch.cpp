@@ -51,6 +51,7 @@ int main(int argc, char* argv[])
         cout << "Register File RS: " << rf->getRs() << endl;
         cout << "Register File RD: " << rf->getRd() << endl;
         cout << "Register File RT: " << rf->getRt() << endl;
+        cout << "Register File sign extend: " << rf->getSignExtend() << endl;
     }
 
     
