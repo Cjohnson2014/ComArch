@@ -42,11 +42,11 @@ int main(int argc, char* argv[])
         /***** WHATS HAPPENING EACH TIME **********/
 
         cout << endl;
-        cout << "*********************" << endl;
-        cout << ">>> IF" << endl;
+        cout << "\033[1;32m*********************\033[0m" << endl;
+        cout << "\033[1;35m >>> IF\033[0m" << endl;
         cout << "Program Counter: " << Pc.get() << endl;
         cout << "Instruction Memory: " << im->getReadDataIM() << endl;
-        cout << ">>> ID" << endl;
+        cout << "\033[1;35m >>> ID\033[0m" << endl;
         cout << "Register File OpCode: " << rf->getOpCode() << endl;
         cout << "Register File RS: " << rf->getRs() << endl;
         cout << "Register File RD: " << rf->getRd() << endl;
