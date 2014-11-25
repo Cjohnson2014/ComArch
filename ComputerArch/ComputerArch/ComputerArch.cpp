@@ -32,16 +32,21 @@ int main(int argc, char* argv[])
 
     for (int j = 0; j < 3; j++)
     {
+        /***** ID stage *****/
         rf->set(im->getReadDataIM());
-        im->setIMAddress(Pc.get()); 
+
+        /***** IF stage *****/
         Pc.set(++i);
+        im->setIMAddress(Pc.get()); 
 
         /***** WHATS HAPPENING EACH TIME **********/
 
         cout << endl;
         cout << "*********************" << endl;
+        cout << ">>> IF" << endl;
         cout << "Program Counter: " << Pc.get() << endl;
         cout << "Instruction Memory: " << im->getReadDataIM() << endl;
+        cout << ">>> ID" << endl;
         cout << "Register File OpCode: " << rf->getOpCode() << endl;
         cout << "Register File RS: " << rf->getRs() << endl;
         cout << "Register File RD: " << rf->getRd() << endl;
