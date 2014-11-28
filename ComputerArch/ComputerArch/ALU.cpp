@@ -7,20 +7,20 @@ ALU::~ALU()
     delete this;
 }
 
-ALU ALU::setOp(ALUOp op)
+ALU *ALU::setOp(ALUOp op)
 {
     this->op = op;
-    return *this;
+    return this;
 }
 
-ALU ALU::setInput(std::bitset<4> a, std::bitset<4> b)
+ALU *ALU::setInput(std::bitset<4> a, std::bitset<4> b)
 {
     this->a4 = a;
     this->b4 = b;
-    return *this;
+    return this;
 }
 
-ALU ALU::setInput(std::bitset<4> a, std::bitset<16> b)
+ALU *ALU::setInput(std::bitset<4> a, std::bitset<16> b)
 {
     std::bitset<16> extend = std::bitset<16>(std::string("0000000000000000"));
     extend[15] = a[3];
@@ -30,7 +30,7 @@ ALU ALU::setInput(std::bitset<4> a, std::bitset<16> b)
 
     this->a16 = extend;
     this->b16 = b;
-    return *this;
+    return this;
 }
 
 std::bitset<4> ALU::execute()
@@ -60,14 +60,6 @@ std::bitset<4> ALU::execute()
 
         case ALU::XOR:
             result4 = this->a4 ^ this->b4;
-            break;
-
-        case ALU::BEQ:
-            result4 = std::bitset<4>((this->a4).to_ulong() - (this->b4).to_ulong());
-            break;
-
-        case ALU::BNE:
-            result4 = std::bitset<4>((this->a4).to_ulong() - (this->b4).to_ulong());
             break;
 
         case ALU::SUB:

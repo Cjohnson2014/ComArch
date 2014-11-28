@@ -9,6 +9,7 @@
 #include "Pc.h"
 #include "RegisterFile.h"
 #include "IM.h"
+#include "ALU.h"
 
 // using standard namespace
 using namespace std;
@@ -29,9 +30,15 @@ int main(int argc, char* argv[])
     Pc.set(i);
     IM *im = new IM(bitset<16>(string("0000000000000000")));
     RegisterFile *rf = new RegisterFile();
+    ALU *alu = new ALU();
 
     for (int j = 0; j < 3; j++)
     {
+        /***** EX stage *****/
+        bitset<4> aluResult = alu->setOp(ALU::ADD)
+           ->setInput(bitset<4>(string("0001")), bitset<4>(string("0001")))
+           ->execute();
+
         /***** ID stage *****/
         rf->set(im->getReadDataIM());
 
@@ -52,6 +59,8 @@ int main(int argc, char* argv[])
         cout << "Register File RD: " << rf->getRd() << endl;
         cout << "Register File RT: " << rf->getRt() << endl;
         cout << "Register File sign extend: " << rf->getSignExtend() << endl;
+        cout << "ALU Result: " << aluResult << endl;
+        cout << "ALU Zero Bit: " << alu->getZeroBit() << endl;
     }
 
     

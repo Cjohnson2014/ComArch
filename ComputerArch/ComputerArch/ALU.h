@@ -18,16 +18,14 @@ class ALU {
             SLT = 8,
             SLL = 9,
             SRL = 10,
-            BEQ = 11,
-            BNE = 12,
-            ADDI = 13
+            ADDI = 11
         };
 
         ~ALU();
 
-        ALU setOp(ALUOp op);
-        ALU setInput(std::bitset<4> a, std::bitset<4> b);
-        ALU setInput(std::bitset<4> a, std::bitset<16> b);
+        ALU *setOp(ALUOp op);
+        ALU *setInput(std::bitset<4> a, std::bitset<4> b);
+        ALU *setInput(std::bitset<4> a, std::bitset<16> b);
         
         std::bitset<4> execute();
 

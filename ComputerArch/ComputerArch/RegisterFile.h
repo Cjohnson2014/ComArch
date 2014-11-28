@@ -32,8 +32,8 @@ class RegisterFile {
         bool getRegWrite();
         // bool getRegRead();
 
-        std::bitset<16> getRead1();
-        std::bitset<16> getRead2();
+        std::bitset<4> getRead1();
+        std::bitset<4> getRead2();
 
 
     private:
@@ -51,9 +51,6 @@ class RegisterFile {
         std::bitset<16> signExtend;
 
         std::bitset<4> wd;
-
-        std::bitset<16> read1;
-        std::bitset<16> read2;
 };
 
 #endif

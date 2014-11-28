@@ -130,12 +130,12 @@ bool RegisterFile::getRegRead()
     return this->regRead;
 }
 */
-std::bitset<16> RegisterFile::getRead1()
+std::bitset<4> RegisterFile::getRead1()
 {
-    return this->read1;
+    return this->rs;
 }
 
-std::bitset<16> RegisterFile::getRead2()
+std::bitset<4> RegisterFile::getRead2()
 {
-    return this->read2;
+    return this->rt;
 }
