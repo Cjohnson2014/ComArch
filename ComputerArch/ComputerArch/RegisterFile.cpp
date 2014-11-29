@@ -279,10 +279,10 @@ bool RegisterFile::getRegRead()
 */
 std::bitset<16> RegisterFile::getRead1()
 {
-    return this->getRegisterValue((this->rt).to_ulong());
+    return this->getRegisterValue((this->rs).to_ulong());
 }
 
 std::bitset<16> RegisterFile::getRead2()
 {
-    return this->getRegisterValue((this->rs).to_ulong());
+    return this->getRegisterValue((this->rt).to_ulong());
 }
