@@ -23,7 +23,7 @@ class ALU {
 
         ~ALU();
 
-        ALU *setOp(ALUOp op);
+        ALU *setOp(int op);
         ALU *setInput(std::bitset<4> a, std::bitset<4> b);
         ALU *setInput(std::bitset<4> a, std::bitset<16> b);
         
@@ -33,7 +33,7 @@ class ALU {
 
     private:
 
-        ALUOp op;
+        int op;
 
         std::bitset<4> a4;
         std::bitset<4> b4;

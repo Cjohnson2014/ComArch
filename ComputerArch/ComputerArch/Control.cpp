@@ -51,6 +51,7 @@ void Control::update(std::bitset<4> opCode)
             this->aluOp = ALU::ADDI;
             this->regWrite = true;
             this->aluSrc = true;
+            this->regDst = true;
 
             break;
 
@@ -58,6 +59,7 @@ void Control::update(std::bitset<4> opCode)
             this->aluOp = ALU::ORI;
             this->regWrite = true;
             this->aluSrc = true;
+            this->regDst = true;
 
             break;
 
@@ -123,7 +125,7 @@ bool Control::getBranch()
     return branch;
 }
 
-ALU Control::getAluOp()
+int Control::getAluOp()
 {
     return aluOp;
 }

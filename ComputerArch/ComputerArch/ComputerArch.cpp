@@ -10,6 +10,7 @@
 #include "RegisterFile.h"
 #include "IM.h"
 #include "ALU.h"
+#include "Control.h"
 
 // using standard namespace
 using namespace std;
@@ -27,20 +28,23 @@ int main(int argc, char* argv[])
     int i = -1;
 
     Pc Pc;
-    Pc.set(i);
+    Control control;
     IM *im = new IM(bitset<16>(string("0000000000000000")));
     RegisterFile *rf = new RegisterFile();
     ALU *alu = new ALU();
 
+    Pc.set(i);
+
     for (int j = 0; j < 3; j++)
     {
         /***** EX stage *****/
-        bitset<4> aluResult = alu->setOp(ALU::ADD)
-           ->setInput(bitset<4>(string("0001")), bitset<4>(string("0001")))
+        bitset<4> aluResult = alu->setOp(control.getAluOp())
+           ->setInput(rf->getRead1(), rf->getRead2())
            ->execute();
 
         /***** ID stage *****/
         rf->set(im->getReadDataIM());
+        control.update(rf->getOpCode());
 
         /***** IF stage *****/
         Pc.set(++i);

@@ -7,7 +7,7 @@ ALU::~ALU()
     delete this;
 }
 
-ALU *ALU::setOp(ALUOp op)
+ALU *ALU::setOp(int op)
 {
     this->op = op;
     return this;
