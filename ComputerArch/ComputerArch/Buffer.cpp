@@ -77,3 +77,15 @@ bool Buffer:: getAluSrc(){
 	std::bitset<16> Buffer:: getSignEx()
 	{return SignEx;}
 
+	void Buffer::setAdd(int add){Buffer::add= add;}
+	int Buffer::getAdd(){return add;}
+	void Buffer::setInstruction(std::bitset<16> instruction){Buffer::instruction=instruction;}
+	std::bitset<16> Buffer::getInstruction(){return instruction;}
+	void Buffer::setAddResult(int addResult){Buffer::addResult=addResult;}
+	int Buffer::getAddResult(){return addResult;}
+	void Buffer::setAluZero(int AluZero){Buffer::AluZero=AluZero;}
+	int Buffer::getAluZero(){return AluZero;}
+	void Buffer::setAluResult(std::bitset<16> AluResult){this->AluResult=AluResult;}
+	std::bitset<16> Buffer::getAluresult(){return AluResult;}
+	std::bitset<16> Buffer::getMemoryReadData(){return memReadData;}
+	void Buffer::setMemoryRead(std::bitset<16> memReadData){this->memReadData=memReadData;}

@@ -13,9 +13,10 @@ public:
 	int getAddResult();
 	void setAluZero(int AluZero);
 	int getAluZero();
-	void setAluResult();
-	int getAluresult();
-
+	void setAluResult(std::bitset<16> Alu);
+	std::bitset<16>getAluresult();
+	std::bitset<16> getMemoryReadData();
+	void setMemoryRead(std::bitset<16> memReadData);
 	void setReadWrite(bool readWrite);
 	void setAluSrc(bool aluSrc);
 	void setJump(bool jump);
@@ -52,6 +53,12 @@ private:
 		std::bitset<16> Read1;
 		std::bitset<16> Read2;
 		std::bitset<16> SignEx;
-
+		int add;
+		std::bitset<16> instruction;
+		int addResult;
+		int AluZero;
+		std::bitset<16> AluResult;
+		std::bitset<16>memReadData;
+	
 };
 
