@@ -5,7 +5,17 @@ class Buffer
 public:
 	Buffer(void);
 	~Buffer(void);
-	void 
+	void setAdd(int add);
+	int getAdd();
+	void setInstruction(std::bitset<16> instruction);
+	std::bitset<16> getInstruction();
+	void setAddResult(int addResult);
+	int getAddResult();
+	void setAluZero(int AluZero);
+	int getAluZero();
+	void setAluResult();
+	int getAluresult();
+
 	void setReadWrite(bool readWrite);
 	void setAluSrc(bool aluSrc);
 	void setJump(bool jump);

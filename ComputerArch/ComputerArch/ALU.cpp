@@ -2,32 +2,85 @@
 
 #include <bitset>
 
-ALU::ALU()
-{
-
-}
-
 ALU::~ALU()
 {
     delete this;
 }
 
-ALU ALU::setOp(ALUOp op)
+ALU *ALU::setOp(int op)
 {
     this->op = op;
-    return *this;
+    return this;
 }
 
-ALU ALU::setInput(std::bitset<4> a, std::bitset<16> b)
+ALU *ALU::setInput(std::bitset<16> a, std::bitset<16> b)
 {
-    this->a = a;
-    this->b = b;
-    return *this;
+    this->a16 = a;
+    this->b16 = b;
+    return this;
 }
 
-void ALU::execute()
+std::bitset<16> ALU::execute()
 {
-    // actual alu execution will go in here
+    std::bitset<16> result16;
+
+    switch (this->op)
+    {
+        case ALU::AND:
+            result16 = this->a16 & this->b16;
+            break;
+
+        case ALU::OR:
+            result16 = this->a16 | this->b16;
+            break;
+
+        case ALU::SLL:
+            result16 = this->a16 << (this->b16).to_ulong();
+            break;
+
+        case ALU::SRL:
+            result16 = this->a16 >> (this->b16).to_ulong();
+            break;
+
+        case ALU::XOR:
+            result16 = this->a16 ^ this->b16;
+            break;
+
+        case ALU::SUB:
+            result16 = std::bitset<16>((this->a16).to_ulong() - (this->b16).to_ulong());
+            break;
+
+        case ALU::ADD:
+            result16 = std::bitset<16>((this->a16).to_ulong() + (this->b16).to_ulong());
+            break;
+
+        case ALU::SLT:
+            result16 = std::bitset<16>((this->a16).to_ulong() - (this->b16).to_ulong());
+            break;
+ 
+        case ALU::ANDI:
+            result16 = this->a16 & this->b16;
+            break;
+
+        case ALU::ORI:
+            result16 = this->a16 | this->b16;
+            break;
+
+        case ALU::ADDI:
+            result16 = std::bitset<16>((this->a16).to_ulong() + (this->b16).to_ulong());
+            break;
+    }
+
+    if (result16.to_ulong() == 0)
+    {
+        this->zeroBit = 1;
+    }
+    else
+    {
+        this->zeroBit = 0;
+    }
+
+    return result16;
 }
 
 std::bitset<1> ALU::getZeroBit()

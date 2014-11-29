@@ -1,4 +1,5 @@
 #include "Pc.h"
+<<<<<<< HEAD
 #include <bitset>
 #include <string>
 
@@ -10,12 +11,14 @@ Pc::~Pc()
 {
 	delete this;
 }
+=======
+>>>>>>> origin/master
 
 void Pc::set(int input)
 {
-     current=input;
+     this->current = input;
 }
 
 int Pc::get(){
-	return current;
+	return this->current;
 }

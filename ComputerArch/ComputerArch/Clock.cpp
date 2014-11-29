@@ -23,28 +23,28 @@ inline void delay(unsigned long ms)
 void Clock::tick(unsigned long ms)
 {
     delay(ms);
-    Clock::toggleEdge();
+    this->toggleEdge();
 }
 
 void Clock::toggleEdge()
 {
-    if (Clock::currentEdge == Clock::HI)
+    if (this->currentEdge == Clock::HI)
     {
-        Clock::currentEdge = Clock::LO;
+        this->currentEdge = Clock::LO;
     }
     else
     {
-        Clock::currentEdge = Clock::HI;
+        this->currentEdge = Clock::HI;
     }
 }
 
 void Clock::setEdge(Clock::Edge edge)
 {
-    Clock::currentEdge = edge;
+    this->currentEdge = edge;
 }
 
 Clock::Edge Clock::getEdge()
 {
-    return Clock::currentEdge;
+    return this->currentEdge;
 }
 

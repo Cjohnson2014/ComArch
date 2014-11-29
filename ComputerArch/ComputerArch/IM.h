@@ -3,16 +3,22 @@
 
 #include <iostream>
 #include <bitset>
+#include <string>
+
+#define ARRAY_SIZE 4
 
 class IM {
 
     public:
-        IM();
+
+        static const std::bitset<16> machinecode[ARRAY_SIZE];
+
+        IM(std::bitset<16> init);
         ~IM();
 
         IM setIMRead(bool IMRead);
 
-        IM setIMAddress(std::bitset<16> IMaddress);
+        void setIMAddress(int IMaddress);
 
         bool getIMRead();
 
@@ -22,7 +28,7 @@ class IM {
 
         bool IMRead;
 
-        std::bitset<16> IMaddress;
+        int IMaddress;
 
         std::bitset<16> readDataIM;
 };

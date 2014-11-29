@@ -1,4 +1,8 @@
+#ifndef ADDER4_H
+#define ADDER4_H
+
 #include <bitset>
+
 class adder4
 {
 public:
@@ -11,3 +15,4 @@ private:
 	std::bitset<16> addVal;
 };
 
+#endif
