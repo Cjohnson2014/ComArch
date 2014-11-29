@@ -115,77 +115,77 @@ int main(int argc, char* argv[])
         cout << "\033[1;34m === Register Values ===\033[0m" << endl;
 
         cout << "$v0: " << rf->getRegisterValue(RegisterFile::$v0) 
-            << " \033[1;32m" << (rf->getRegisterValue(RegisterFile::$v0)).to_ulong()
+            << " \033[1;32m" << (long)(rf->getRegisterValue(RegisterFile::$v0)).to_ulong()
             << "\033[0m"
             << endl;
 
         cout << "$v1: " << rf->getRegisterValue(RegisterFile::$v1) 
-            << " \033[1;32m" << (rf->getRegisterValue(RegisterFile::$v1)).to_ulong()
+            << " \033[1;32m" << (long)(rf->getRegisterValue(RegisterFile::$v1)).to_ulong()
             << "\033[0m"
             << endl;
 
         cout << "$v2: " << rf->getRegisterValue(RegisterFile::$v2) 
-            << " \033[1;32m" << (rf->getRegisterValue(RegisterFile::$v2)).to_ulong()
+            << " \033[1;32m" << (long)(rf->getRegisterValue(RegisterFile::$v2)).to_ulong()
             << "\033[0m"
             << endl;
 
         cout << "$v3: " << rf->getRegisterValue(RegisterFile::$v3) 
-            << " \033[1;32m" << (rf->getRegisterValue(RegisterFile::$v3)).to_ulong()
+            << " \033[1;32m" << (long)(rf->getRegisterValue(RegisterFile::$v3)).to_ulong()
             << "\033[0m"
             << endl;
 
         cout << "$a0: " << rf->getRegisterValue(RegisterFile::$a0) 
-            << " \033[1;32m" << (rf->getRegisterValue(RegisterFile::$a0)).to_ulong()
+            << " \033[1;32m" << (long)(rf->getRegisterValue(RegisterFile::$a0)).to_ulong()
             << "\033[0m"
             << endl;
 
         cout << "$a1: " << rf->getRegisterValue(RegisterFile::$a1) 
-            << " \033[1;32m" << (rf->getRegisterValue(RegisterFile::$a1)).to_ulong()
+            << " \033[1;32m" << (long)(rf->getRegisterValue(RegisterFile::$a1)).to_ulong()
             << "\033[0m"
             << endl;
 
         cout << "$t0: " << rf->getRegisterValue(RegisterFile::$t0) 
-            << " \033[1;32m" << (rf->getRegisterValue(RegisterFile::$t0)).to_ulong()
+            << " \033[1;32m" << (long)(rf->getRegisterValue(RegisterFile::$t0)).to_ulong()
             << "\033[0m"
             << endl;
 
         cout << "$t1: " << rf->getRegisterValue(RegisterFile::$t1) 
-            << " \033[1;32m" << (rf->getRegisterValue(RegisterFile::$t1)).to_ulong()
+            << " \033[1;32m" << (long)(rf->getRegisterValue(RegisterFile::$t1)).to_ulong()
             << "\033[0m"
             << endl;
 
         cout << "$t2: " << rf->getRegisterValue(RegisterFile::$t2) 
-            << " \033[1;32m" << (rf->getRegisterValue(RegisterFile::$t2)).to_ulong()
+            << " \033[1;32m" << (long)(rf->getRegisterValue(RegisterFile::$t2)).to_ulong()
             << "\033[0m"
             << endl;
 
         cout << "$t3: " << rf->getRegisterValue(RegisterFile::$t3) 
-            << " \033[1;32m" << (rf->getRegisterValue(RegisterFile::$t3)).to_ulong()
+            << " \033[1;32m" << (long)(rf->getRegisterValue(RegisterFile::$t3)).to_ulong()
             << "\033[0m"
             << endl;
 
         cout << "$t4: " << rf->getRegisterValue(RegisterFile::$t4) 
-            << " \033[1;32m" << (rf->getRegisterValue(RegisterFile::$t4)).to_ulong()
+            << " \033[1;32m" << (long)(rf->getRegisterValue(RegisterFile::$t4)).to_ulong()
             << "\033[0m"
             << endl;
 
         cout << "$t5: " << rf->getRegisterValue(RegisterFile::$t5) 
-            << " \033[1;32m" << (rf->getRegisterValue(RegisterFile::$t5)).to_ulong()
+            << " \033[1;32m" << (long)(rf->getRegisterValue(RegisterFile::$t5)).to_ulong()
             << "\033[0m"
             << endl;
 
         cout << "$t6: " << rf->getRegisterValue(RegisterFile::$t6) 
-            << " \033[1;32m" << (rf->getRegisterValue(RegisterFile::$t6)).to_ulong()
+            << " \033[1;32m" << (long)(rf->getRegisterValue(RegisterFile::$t6)).to_ulong()
             << "\033[0m"
             << endl;
 
         cout << "$t7: " << rf->getRegisterValue(RegisterFile::$t7) 
-            << " \033[1;32m" << (rf->getRegisterValue(RegisterFile::$t7)).to_ulong()
+            << " \033[1;32m" << (long)(rf->getRegisterValue(RegisterFile::$t7)).to_ulong()
             << "\033[0m"
             << endl;
 
         cout << "$t8: " << rf->getRegisterValue(RegisterFile::$t8) 
-            << " \033[1;32m" << (rf->getRegisterValue(RegisterFile::$t8)).to_ulong()
+            << " \033[1;32m" << (long)(rf->getRegisterValue(RegisterFile::$t8)).to_ulong()
             << "\033[0m"
             << endl;
 
