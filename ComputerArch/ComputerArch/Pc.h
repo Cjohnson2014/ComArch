@@ -5,6 +5,8 @@ class Pc
 {
 public:
 
+    Pc();
+
 	void set(int input);
 
 	int get();

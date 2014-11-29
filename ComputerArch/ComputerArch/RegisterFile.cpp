@@ -12,13 +12,6 @@ RegisterFile::~RegisterFile()
     delete this;
 }
 
-<<<<<<< HEAD
-//RegisterFile RegisterFile::setRegWrite(bool regWrite)
-//{
-//    this->regWrite = regWrite;
-//    return *this;
-//}
-=======
 void RegisterFile::setRegisterValue(int reg, std::bitset<16> bit)
 {
 
@@ -218,7 +211,7 @@ RegisterFile RegisterFile::setRegWrite(bool regWrite)
     this->regWrite = regWrite;
     return *this;
 }
->>>>>>> origin/master
+
 /*
 RegisterFile RegisterFile::setRegRead(bool regRead)
 {
@@ -258,11 +251,7 @@ RegisterFile RegisterFile::setRs(std::bitset<4> rs)
     return *this;
 }
 
-<<<<<<< HEAD
-RegisterFile RegisterFile::setRd(std::bitset<4> rd)
-=======
 void RegisterFile::setRd(std::bitset<4> rd)
->>>>>>> origin/master
 {
     this->rd = rd;
 }

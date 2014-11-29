@@ -22,20 +22,12 @@
 #include "Control.h"
 #include "Mux.h"
 #include "DataMemory.h"
-
+#include "Buffer.h"
 
 // using standard namespace
 using namespace std;
 
 /**
-<<<<<<< HEAD
- * Define all machine code
- */
-
-
-/**
-=======
->>>>>>> origin/master
  * Begin main execution
  */
 int main(int argc, char* argv[])
@@ -46,6 +38,7 @@ int main(int argc, char* argv[])
     std::cout << "arg count: " << argc << endl;
     std::cout << "arg vals: " << argv << endl;
 
+    /*
          bool done=false;
 		//Pc Pc;
 		//Clock Clock;
@@ -56,6 +49,7 @@ int main(int argc, char* argv[])
 			done = true;
 		//}
 		std::cout << "Program Complete press enter to finish:/n";
+        */
 
 
     cout << "arg count: " << argc << endl;
@@ -74,6 +68,8 @@ int main(int argc, char* argv[])
     Mux regDstMux;
     Mux aluSrcMux;
     Mux memToRegMux;
+
+    Buffer IFIDBuffer;
 
     bitset<16> aluResult;
     bitset<16> zero = bitset<16>(0x0000);
@@ -173,18 +169,25 @@ int main(int argc, char* argv[])
 
         cout << endl;
         cout << "\033[1;33m*********************\033[0m" << endl;
+
         cout << "\033[1;35m >>> IF\033[0m" << endl;
+
         cout << "Program Counter: " << Pc.get() << endl;
         cout << "Instruction Memory: " << im->getReadDataIM() << endl;
+
         cout << "\033[1;35m >>> ID\033[0m" << endl;
+
         cout << "Register File OpCode: " << rf->getOpCode() << endl;
         cout << "Register File RS: " << rf->getRs() << endl;
         cout << "Register File RT: " << rf->getRt() << endl;
         cout << "Register File RD: " << rf->getRd() << endl;
         cout << "Register File sign extend: " << rf->getSignExtend() << endl;
+
         cout << "\033[1;35m >>> EX\033[0m" << endl;
+
         cout << "ALU Result: " << aluResult << endl;
         cout << "ALU Zero Bit: " << alu->getZeroBit() << endl;
+
         cout << "\033[1;34m === Register Values ===\033[0m" << endl;
 
         cout << "$v0: " << rf->getRegisterValue(RegisterFile::$v0) 
@@ -274,18 +277,15 @@ int main(int argc, char* argv[])
             << "\033[0m"
             << endl;
 
-
         cout << "Mem[$a0+4]: " << dm.get(RegisterFile::$a0 + 2)
             << " \033[1;32m" << (long)(dm.get(RegisterFile::$a0 + 2).to_ulong())
             << "\033[0m"
             << endl;
 
-
         cout << "Mem[$a0+6]: " << dm.get(RegisterFile::$a0 + 3)
             << " \033[1;32m" << (long)(dm.get(RegisterFile::$a0 + 3).to_ulong())
             << "\033[0m"
             << endl;
-
 
         cout << "Mem[$a0+8]: " << dm.get(RegisterFile::$a0 + 4)
             << " \033[1;32m" << (long)(dm.get(RegisterFile::$a0 + 4).to_ulong())
