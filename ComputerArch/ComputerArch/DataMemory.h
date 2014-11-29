@@ -14,7 +14,7 @@ class DataMemory {
 
     private:
 
-        std::bitset<16> memory[20];
+        std::bitset<16> memory[MEM_SIZE];
 
 };
 
