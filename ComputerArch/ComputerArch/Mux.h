@@ -1,4 +1,8 @@
+#ifndef MUX_H
+#define MUX_H
+
 #include <bitset>
+
 class Mux
 {
 public:
@@ -17,14 +21,4 @@ private:
 
 };
 
-Mux::Mux()
-{
-	output=0;
-	input1=0;
-	input0=0;
-}
-
-Mux::~Mux()
-{
-	delete this;
-}
+#endif

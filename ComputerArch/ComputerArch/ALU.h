@@ -24,10 +24,10 @@ class ALU {
         ~ALU();
 
         ALU *setOp(int op);
-        ALU *setInput(std::bitset<4> a, std::bitset<4> b);
-        ALU *setInput(std::bitset<4> a, std::bitset<16> b);
+        // ALU *setInput(std::bitset<4> a, std::bitset<4> b);
+        ALU *setInput(std::bitset<16> a, std::bitset<16> b);
         
-        std::bitset<4> execute();
+        std::bitset<16> execute();
 
         std::bitset<1> getZeroBit();
 

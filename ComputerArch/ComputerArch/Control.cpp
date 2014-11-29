@@ -20,30 +20,35 @@ void Control::update(std::bitset<4> opCode)
         case 0: // add
             this->aluOp = ALU::ADD;
             this->regWrite = true;
+            this->regDst = true;
 
             break;
 
         case 1: // sub
             this->aluOp = ALU::SUB;
             this->regWrite = true;
+            this->regDst = true;
 
             break;
 
         case 2: // or
             this->aluOp = ALU::OR;
             this->regWrite = true;
+            this->regDst = true;
 
             break;
 
         case 3: // exclusive or
             this->aluOp = ALU::XOR;
             this->regWrite = true;
+            this->regDst = true;
 
             break;
 
         case 4: // and
             this->aluOp = ALU::AND;
             this->regWrite = true;
+            this->regDst = true;
 
             break;
 
@@ -51,7 +56,6 @@ void Control::update(std::bitset<4> opCode)
             this->aluOp = ALU::ADDI;
             this->regWrite = true;
             this->aluSrc = true;
-            this->regDst = true;
 
             break;
 
@@ -59,12 +63,12 @@ void Control::update(std::bitset<4> opCode)
             this->aluOp = ALU::ORI;
             this->regWrite = true;
             this->aluSrc = true;
-            this->regDst = true;
 
             break;
 
         case 7: // set less than
             this->aluOp = ALU::SLT;
+            this->regDst = true;
 
             break;
             

@@ -4,7 +4,10 @@
 #include <iostream>
 
 const std::bitset<16> IM::machinecode[ARRAY_SIZE] = {
-    std::bitset<16>(std::string("0000000100110111"))
+    std::bitset<16>(std::string("0000000100110111")),
+    std::bitset<16>(std::string("0101100110010111")),
+    std::bitset<16>(std::string("0110101110110011")),
+    std::bitset<16>(std::string("0001011110001010"))
 };
 
 IM::IM(std::bitset<16> init)
