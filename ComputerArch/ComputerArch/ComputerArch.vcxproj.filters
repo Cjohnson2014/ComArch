@@ -39,7 +39,10 @@
     <ClCompile Include="RegisterFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IdExBuff.cpp">
+    <ClCompile Include="Clock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Buffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -68,7 +71,10 @@
     <ClInclude Include="RegisterFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IdExBuff.h">
+    <ClInclude Include="Clock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Buffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

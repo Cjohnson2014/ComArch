@@ -4,7 +4,7 @@
 
 
 Pc::Pc(){
-	current=std::bitset<16>(0);
+	current=0;
 }
 Pc::~Pc()
 {
