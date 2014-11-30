@@ -117,7 +117,15 @@ void Control::update(std::bitset<4> opCode)
             this->jump = true;
 
             break;
-    }
+ 
+        case 15: // sub immediate
+            this->aluOp = ALU::SUBI;
+            this->regWrite = true;
+            this->aluSrc = true;
+
+            break;
+
+   }
 }
 
 bool Control::getMemToReg()

@@ -19,7 +19,8 @@ class ALU {
             SLL = 9,
             SRL = 10,
             ADDI = 11,
-            BNE = 12
+            BNE = 12,
+            SUBI = 13
         };
 
         ~ALU();

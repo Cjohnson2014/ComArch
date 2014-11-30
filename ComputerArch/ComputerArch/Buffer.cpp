@@ -3,6 +3,26 @@
 
 Buffer::Buffer(void)
 {
+    this->rd = 0;
+    this->Jump = 0;
+    this->memReadData = 0;
+    this->ReadWrite = 0;
+    this->Read1 = 0;
+    this->Read2 = 0;
+    this->RegWrite = 0;
+    this->MemRead = 0;
+    this->add = 0;
+    this->instruction = 0;
+    this->addResult = 0;
+    this->MemWrite = 0;
+    this->MemtoReg = 0;
+    this->SignEx = 0;
+    this->pc = 0;
+    this->AluSrc = 0;
+    this->AluOp = 0;
+    this->AluZero = 0;
+    this->AluResult = 0;
+    this->Branch = 0;
 }
 
 

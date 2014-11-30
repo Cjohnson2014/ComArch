@@ -196,7 +196,8 @@ void RegisterFile::set(std::bitset<16> rf)
 
     for (int i = 15; i > 3; i--)
     {
-        signExtend[i] = std::bitset<1>(std::string("0"))[0];
+        signExtend[i] = rf[3];
+        //signExtend[i] = std::bitset<1>(std::string("0"))[0];
     }
 
     this->opCode = opCode;

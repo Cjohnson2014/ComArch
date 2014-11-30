@@ -67,9 +67,13 @@ std::bitset<16> ALU::execute()
             }
 
             break;
- 
+  
         case ALU::ANDI:
             result16 = this->a16 & this->b16;
+            break;
+
+        case ALU::SUBI:
+            result16 = (this->a16).to_ulong() - (this->b16).to_ulong();
             break;
 
         case ALU::ORI:
