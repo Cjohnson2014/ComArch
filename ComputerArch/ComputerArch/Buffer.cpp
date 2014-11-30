@@ -55,10 +55,21 @@ void Buffer::setRegDst(std::bitset<4> rd)
     this->rd = rd;
 }
 
+void Buffer::setpc(int pc)
+{
+    this->pc = pc;
+}
+
+int Buffer::getpc()
+{
+    return this->pc;
+}
+
 std::bitset<4> Buffer::getRegDst()
 {
     return this->rd;
 }
+
 
 bool Buffer:: getAluSrc(){
     return AluSrc;

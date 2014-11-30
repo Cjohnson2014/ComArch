@@ -64,6 +64,8 @@ int main(int argc, char* argv[])
     Mux regDstMux;
     Mux aluSrcMux;
     Mux memToRegMux;
+    Mux pcSrcMux;
+    Mux jumpMux;
 
     Buffer IFIDBuffer;
     Buffer IDEXBuffer;
@@ -106,12 +108,12 @@ int main(int argc, char* argv[])
 
         dm.setControlLines(EXMEMBuffer.getMemWrite(), control.getMemRead());
         dm.set((EXMEMBuffer.getAluresult()).to_ulong(), EXMEMBuffer.getRead2());
-        cout << "alu: " << EXMEMBuffer.getAluresult() << endl;
 
         MEMWBBuffer.setMemtoReg(EXMEMBuffer.getMemtoReg());
         MEMWBBuffer.setAluResult(EXMEMBuffer.getAluresult());
         MEMWBBuffer.setMemoryRead(dm.get((EXMEMBuffer.getAluresult()).to_ulong()));
         MEMWBBuffer.setRegDst(EXMEMBuffer.getRegDst());
+
 
         /*
          * EX Stage
@@ -124,20 +126,22 @@ int main(int argc, char* argv[])
            ->setInput(IDEXBuffer.getRead1(), aluSrcMux.getOutput())
            ->execute();
 
+        int shiftLeft = (IDEXBuffer.getSignEx()).to_ulong() << 0;
+        int addResult = IDEXBuffer.getpc() + shiftLeft;
+        int branch = IDEXBuffer.getBranch() & (alu->getZeroBit()).to_ulong();
+
         EXMEMBuffer.setAluResult(aluResult);
         EXMEMBuffer.setRead2(IDEXBuffer.getRead2());
         EXMEMBuffer.setMemWrite(IDEXBuffer.getMemWrite());
-        // EXMEMBuffer.setMemoryRead(IDEXBuffer.getMemoryReadData());
         EXMEMBuffer.setMemtoReg(IDEXBuffer.getMemtoReg());
         EXMEMBuffer.setRegDst(IDEXBuffer.getRegDst());
+        EXMEMBuffer.setpc(addResult);
 
         /*
          * ID Stage
          */
 
-        //rf->setRegisterValue((rf->getRd()).to_ulong(), MEMWBBuffer.getAluresult());
         rf->setRegisterValue(MEMWBBuffer.getRegDst().to_ulong(), memToRegMux.getOutput());
-        // rf->setRegisterValue((rf->getRd()).to_ulong(), aluResult);
 
         rf->set(IFIDBuffer.getInstruction());
         control.update(rf->getOpCode());
@@ -183,16 +187,28 @@ int main(int argc, char* argv[])
         IDEXBuffer.setMemtoReg(control.getMemToReg());
         IDEXBuffer.setMemWrite(control.getMemWrite());
         IDEXBuffer.setRegDst(rf->getRd());
+        IDEXBuffer.setpc(IFIDBuffer.getpc());
         // IDEXBuffer.setMemoryRead(control.getMemRead());
 
         /*
          * IF Stage
          */
 
-        Pc.set(++i);
+        pcSrcMux.setInput0(++i);
+        pcSrcMux.setInput1(EXMEMBuffer.getpc());
+        pcSrcMux.setControlLine(branch);
+
+        jumpMux.setInput0(pcSrcMux.getOutput());
+        jumpMux.setInput1(shiftLeft);
+        jumpMux.setControlLine(EXMEMBuffer.getJump());
+
+        Pc.set((jumpMux.getOutput().to_ulong()));
+        //Pc.set(++i);
+
         im->setIMAddress(Pc.get()); 
 
         IFIDBuffer.setInstruction(im->getReadDataIM());
+        IFIDBuffer.setpc(++i);
 
         /***** WHATS HAPPENING EACH TIME **********/
 

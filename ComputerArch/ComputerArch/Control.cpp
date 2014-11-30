@@ -75,12 +75,14 @@ void Control::update(std::bitset<4> opCode)
         case 8: // shift left
             this->aluOp = ALU::SLL;
             this->regWrite = true;
+            this->aluSrc = true;
 
             break;
 
         case 9: // shift right
             this->aluOp = ALU::SRL;
             this->regWrite = true;
+            this->aluSrc = true;
 
             break;
 
@@ -91,7 +93,8 @@ void Control::update(std::bitset<4> opCode)
             break;
 
         case 11: // branch not equal
-            this->aluOp = ALU::SUB;
+            this->aluOp = ALU::BNE;
+            this->branch = true;
 
             break;
 

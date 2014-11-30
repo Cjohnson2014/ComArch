@@ -79,6 +79,15 @@ std::bitset<16> ALU::execute()
         case ALU::ADDI:
             result16 = std::bitset<16>((this->a16).to_ulong() + (this->b16).to_ulong());
             break;
+
+        case ALU::BNE:
+
+            if (((this->a16).to_ulong() - (this->b16).to_ulong()) != 0)
+            {
+                result16 = 0;
+            }
+            
+            break;
     }
 
     if (result16.to_ulong() == 0)

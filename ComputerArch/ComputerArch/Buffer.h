@@ -30,7 +30,9 @@ public:
 	void setRead2(std::bitset<16> read2);
 	void setSignEx(std::bitset<16> signex);
     void setRegDst(std::bitset<4> rd);
+    void setpc(int pc);
 
+    int getpc();
 	bool getAluSrc();
 	bool getJump();
 	bool getMemtoReg();
@@ -64,6 +66,7 @@ private:
 		std::bitset<16>memReadData;
 
         std::bitset<4> rd;
+        int pc;
 };
 
 #endif
