@@ -80,26 +80,25 @@ int main(int argc, char* argv[])
     rf->setRegisterValue(RegisterFile::$a0, bitset<16>(0x0010));
     rf->setRegisterValue(RegisterFile::$a1, bitset<16>(0x0005));
     
-    dm.set(RegisterFile::$a0, bitset<16>(0x0101));
-    dm.set(RegisterFile::$a0 + 1, bitset<16>(0x0110));
-    dm.set(RegisterFile::$a0 + 2, bitset<16>(0x0011));
-    dm.set(RegisterFile::$a0 + 3, bitset<16>(0x00f0));
-    dm.set(RegisterFile::$a0 + 4, bitset<16>(0x00ff));
+    dm.set(rf->getRegisterValue(RegisterFile::$a0).to_ulong(), bitset<16>(0x0101));
+    dm.set(rf->getRegisterValue(RegisterFile::$a0).to_ulong() + 1, bitset<16>(0x0110));
+    dm.set(rf->getRegisterValue(RegisterFile::$a0).to_ulong() + 2, bitset<16>(0x0011));
+    dm.set(rf->getRegisterValue(RegisterFile::$a0).to_ulong() + 3, bitset<16>(0x00f0));
+    dm.set(rf->getRegisterValue(RegisterFile::$a0).to_ulong() + 4, bitset<16>(0x00ff));
 
     Pc.set(i);
 
 
-    for (int j = 0; j < 4; j++)
+    for (int j = 0; j < 8; j++)
     {
 
         /*
          * WB Stage
          */
 
-        memToRegMux.setInput0(MEMWBBuffer.getAluresult());
-        memToRegMux.setInput1(dm.get((MEMWBBuffer.getAluresult()).to_ulong()));
-        memToRegMux.setControlLine(MEMWBBuffer.getMemtoReg());
-        cout << "mem : " << EXMEMBuffer.getAluresult() << endl;
+        memToRegMux.setInput0(EXMEMBuffer.getAluresult());
+        memToRegMux.setInput1(dm.get((EXMEMBuffer.getAluresult()).to_ulong()));
+        memToRegMux.setControlLine(EXMEMBuffer.getMemtoReg());
 
         /*
          * MEM Stage
@@ -111,6 +110,7 @@ int main(int argc, char* argv[])
         MEMWBBuffer.setMemtoReg(EXMEMBuffer.getMemtoReg());
         MEMWBBuffer.setAluResult(EXMEMBuffer.getAluresult());
         MEMWBBuffer.setMemoryRead(dm.get((EXMEMBuffer.getAluresult()).to_ulong()));
+        MEMWBBuffer.setRegDst(EXMEMBuffer.getRegDst());
 
         /*
          * EX Stage
@@ -128,13 +128,14 @@ int main(int argc, char* argv[])
         EXMEMBuffer.setMemWrite(IDEXBuffer.getMemWrite());
         // EXMEMBuffer.setMemoryRead(IDEXBuffer.getMemoryReadData());
         EXMEMBuffer.setMemtoReg(IDEXBuffer.getMemtoReg());
+        EXMEMBuffer.setRegDst(IDEXBuffer.getRegDst());
 
         /*
          * ID Stage
          */
 
-        rf->setRegisterValue((rf->getRd()).to_ulong(), MEMWBBuffer.getAluresult());
-        // rf->setRegisterValue((rf->getRd()).to_ulong(), memToRegMux.getOutput());
+        //rf->setRegisterValue((rf->getRd()).to_ulong(), MEMWBBuffer.getAluresult());
+        rf->setRegisterValue(MEMWBBuffer.getRegDst().to_ulong(), memToRegMux.getOutput());
         // rf->setRegisterValue((rf->getRd()).to_ulong(), aluResult);
 
         rf->set(IFIDBuffer.getInstruction());
@@ -180,6 +181,7 @@ int main(int argc, char* argv[])
         IDEXBuffer.setAluSrc(control.getAluSrc());
         IDEXBuffer.setMemtoReg(control.getMemToReg());
         IDEXBuffer.setMemWrite(control.getMemWrite());
+        IDEXBuffer.setRegDst(rf->getRd());
         // IDEXBuffer.setMemoryRead(control.getMemRead());
 
         /*
@@ -293,28 +295,33 @@ int main(int argc, char* argv[])
 
         cout << "\033[1;34m === Memory Values ===\033[0m" << endl;
 
-        cout << "Mem[$a0]:   " << dm.get(RegisterFile::$a0)
-            << " \033[1;32m" << (long)(dm.get(RegisterFile::$a0).to_ulong())
+        cout << "Mem[$a0]:   " << dm.get((rf->getRegisterValue(RegisterFile::$a0)).to_ulong())
+            << " \033[1;32m" 
+            << (long)(dm.get((rf->getRegisterValue(RegisterFile::$a0)).to_ulong()).to_ulong())
             << "\033[0m"
             << endl;
 
-        cout << "Mem[$a0+2]: " << dm.get(RegisterFile::$a0 + 1)
-            << " \033[1;32m" << (long)(dm.get(RegisterFile::$a0 + 1).to_ulong())
+        cout << "Mem[$a0]:   " << dm.get((rf->getRegisterValue(RegisterFile::$a0)).to_ulong() + 1)
+            << " \033[1;32m" 
+            << (long)(dm.get((rf->getRegisterValue(RegisterFile::$a0)).to_ulong() + 1).to_ulong())
             << "\033[0m"
             << endl;
 
-        cout << "Mem[$a0+4]: " << dm.get(RegisterFile::$a0 + 2)
-            << " \033[1;32m" << (long)(dm.get(RegisterFile::$a0 + 2).to_ulong())
+        cout << "Mem[$a0]:   " << dm.get((rf->getRegisterValue(RegisterFile::$a0)).to_ulong() + 2)
+            << " \033[1;32m" 
+            << (long)(dm.get((rf->getRegisterValue(RegisterFile::$a0)).to_ulong() + 2).to_ulong())
             << "\033[0m"
             << endl;
 
-        cout << "Mem[$a0+6]: " << dm.get(RegisterFile::$a0 + 3)
-            << " \033[1;32m" << (long)(dm.get(RegisterFile::$a0 + 3).to_ulong())
+        cout << "Mem[$a0]:   " << dm.get((rf->getRegisterValue(RegisterFile::$a0)).to_ulong() + 3)
+            << " \033[1;32m" 
+            << (long)(dm.get((rf->getRegisterValue(RegisterFile::$a0)).to_ulong() + 3).to_ulong())
             << "\033[0m"
             << endl;
 
-        cout << "Mem[$a0+8]: " << dm.get(RegisterFile::$a0 + 4)
-            << " \033[1;32m" << (long)(dm.get(RegisterFile::$a0 + 4).to_ulong())
+        cout << "Mem[$a0]:   " << dm.get((rf->getRegisterValue(RegisterFile::$a0)).to_ulong() + 4)
+            << " \033[1;32m" 
+            << (long)(dm.get((rf->getRegisterValue(RegisterFile::$a0)).to_ulong() + 4).to_ulong())
             << "\033[0m"
             << endl;
 

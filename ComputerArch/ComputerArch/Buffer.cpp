@@ -50,6 +50,16 @@ void Buffer:: setSignEx(std::bitset<16> signex)
     SignEx=signex;
 }
 
+void Buffer::setRegDst(std::bitset<4> rd)
+{
+    this->rd = rd;
+}
+
+std::bitset<4> Buffer::getRegDst()
+{
+    return this->rd;
+}
+
 bool Buffer:: getAluSrc(){
     return AluSrc;
 }

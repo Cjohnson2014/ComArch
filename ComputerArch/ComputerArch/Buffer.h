@@ -29,7 +29,8 @@ public:
 	void setRead1(std::bitset<16> read1);
 	void setRead2(std::bitset<16> read2);
 	void setSignEx(std::bitset<16> signex);
-	
+    void setRegDst(std::bitset<4> rd);
+
 	bool getAluSrc();
 	bool getJump();
 	bool getMemtoReg();
@@ -40,6 +41,7 @@ public:
 	std::bitset<16> getRead1();
 	std::bitset<16> getRead2();
 	std::bitset<16> getSignEx();
+    std::bitset<4> getRegDst();
 
 private:
 		bool ReadWrite;
@@ -60,7 +62,8 @@ private:
 		int AluZero;
 		std::bitset<16> AluResult;
 		std::bitset<16>memReadData;
-	
+
+        std::bitset<4> rd;
 };
 
 #endif
