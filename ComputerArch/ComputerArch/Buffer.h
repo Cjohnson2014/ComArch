@@ -1,10 +1,11 @@
-#pragma once
+#ifndef BUFFER_H
+#define BUFFER_H
+
 #include <bitset>
 class Buffer
 {
 public:
 	Buffer(void);
-	~Buffer(void);
 	void setAdd(int add);
 	int getAdd();
 	void setInstruction(std::bitset<16> instruction);
@@ -14,7 +15,7 @@ public:
 	void setAluZero(int AluZero);
 	int getAluZero();
 	void setAluResult(std::bitset<16> Alu);
-	std::bitset<16>getAluresult();
+	std::bitset<16> getAluresult();
 	std::bitset<16> getMemoryReadData();
 	void setMemoryRead(std::bitset<16> memReadData);
 	void setReadWrite(bool readWrite);
@@ -62,3 +63,4 @@ private:
 	
 };
 
+#endif

@@ -51,10 +51,6 @@ int main(int argc, char* argv[])
 		std::cout << "Program Complete press enter to finish:/n";
         */
 
-
-    cout << "arg count: " << argc << endl;
-    cout << "arg vals: " << argv << endl;
-
     int i = -1;
 
     Pc Pc;
@@ -70,6 +66,9 @@ int main(int argc, char* argv[])
     Mux memToRegMux;
 
     Buffer IFIDBuffer;
+    Buffer IDEXBuffer;
+    Buffer EXMEMBuffer;
+    Buffer MEMWBBuffer;
 
     bitset<16> aluResult;
     bitset<16> zero = bitset<16>(0x0000);
@@ -89,43 +88,56 @@ int main(int argc, char* argv[])
 
     Pc.set(i);
 
-    for (int j = 0; j < 8; j++)
+
+    for (int j = 0; j < 4; j++)
     {
+
         /*
          * WB Stage
          */
 
-        memToRegMux.setInput0(aluResult);
-        memToRegMux.setInput1(dm.get(aluResult.to_ulong()));
-        memToRegMux.setControlLine(control.getMemToReg());
+        memToRegMux.setInput0(MEMWBBuffer.getAluresult());
+        memToRegMux.setInput1(dm.get((MEMWBBuffer.getAluresult()).to_ulong()));
+        memToRegMux.setControlLine(MEMWBBuffer.getMemtoReg());
+        cout << "mem : " << EXMEMBuffer.getAluresult() << endl;
 
         /*
          * MEM Stage
          */
 
-        dm.setControlLines(control.getMemWrite(), control.getMemRead());
-        dm.set(aluResult.to_ulong(), rf->getRead2());
+        //dm.setControlLines(EXMEMBuffer.getMemWrite(), control.getMemRead());
+        //dm.set((EXMEMBuffer.getAluresult()).to_ulong(), EXMEMBuffer.getRead2());
 
+        MEMWBBuffer.setMemtoReg(EXMEMBuffer.getMemtoReg());
+        MEMWBBuffer.setAluResult(EXMEMBuffer.getAluresult());
+        MEMWBBuffer.setMemoryRead(dm.get((EXMEMBuffer.getAluresult()).to_ulong()));
 
         /*
          * EX Stage
          */
 
-        aluSrcMux.setInput0(rf->getRead2());
-        aluSrcMux.setInput1(rf->getSignExtend());
-        aluSrcMux.setControlLine(control.getAluSrc());
-        aluResult = alu->setOp(control.getAluOp())
-           ->setInput(rf->getRead1(), aluSrcMux.getOutput())
+        aluSrcMux.setInput0(IDEXBuffer.getRead2());
+        aluSrcMux.setInput1(IDEXBuffer.getSignEx());
+        aluSrcMux.setControlLine(IDEXBuffer.getAluSrc());
+        aluResult = alu->setOp(IDEXBuffer.getAluOp())
+           ->setInput(IDEXBuffer.getRead1(), aluSrcMux.getOutput())
            ->execute();
+
+        EXMEMBuffer.setAluResult(aluResult);
+        EXMEMBuffer.setRead2(IDEXBuffer.getRead2());
+        EXMEMBuffer.setMemWrite(IDEXBuffer.getMemWrite());
+        // EXMEMBuffer.setMemoryRead(IDEXBuffer.getMemoryReadData());
+        EXMEMBuffer.setMemtoReg(IDEXBuffer.getMemtoReg());
 
         /*
          * ID Stage
          */
 
+        rf->setRegisterValue((rf->getRd()).to_ulong(), MEMWBBuffer.getAluresult());
         // rf->setRegisterValue((rf->getRd()).to_ulong(), memToRegMux.getOutput());
-        rf->setRegisterValue((rf->getRd()).to_ulong(), aluResult);
+        // rf->setRegisterValue((rf->getRd()).to_ulong(), aluResult);
 
-        rf->set(im->getReadDataIM());
+        rf->set(IFIDBuffer.getInstruction());
         control.update(rf->getOpCode());
 
         // need to convert rt and rd to 16 bit values to be
@@ -158,12 +170,26 @@ int main(int argc, char* argv[])
 
         rf->setRd(regdst);
 
+        IDEXBuffer.setSignEx(rf->getSignExtend());
+        IDEXBuffer.setRead1(rf->getRead1());
+        IDEXBuffer.setRead2(rf->getRead2());
+        IDEXBuffer.setJump(control.getJump());
+        IDEXBuffer.setBranch(control.getBranch());
+        IDEXBuffer.setRegwrite(control.getRegWrite());
+        IDEXBuffer.setAluOp(control.getAluOp());
+        IDEXBuffer.setAluSrc(control.getAluSrc());
+        IDEXBuffer.setMemtoReg(control.getMemToReg());
+        IDEXBuffer.setMemWrite(control.getMemWrite());
+        // IDEXBuffer.setMemoryRead(control.getMemRead());
+
         /*
          * IF Stage
          */
 
         Pc.set(++i);
         im->setIMAddress(Pc.get()); 
+
+        IFIDBuffer.setInstruction(im->getReadDataIM());
 
         /***** WHATS HAPPENING EACH TIME **********/
 
