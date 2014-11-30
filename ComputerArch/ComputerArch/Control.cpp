@@ -96,14 +96,17 @@ void Control::update(std::bitset<4> opCode)
             break;
 
         case 12: // store word
+            this->aluOp = ALU::ADD;
             this->memWrite = true;
+            this->aluSrc = true;
 
             break;
 
         case 13: // load word
-            this->memWrite = true;
+            this->aluOp = ALU::ADD;
             this->regWrite = true;
             this->memToReg = true;
+            this->aluSrc = true;
 
             break;
 

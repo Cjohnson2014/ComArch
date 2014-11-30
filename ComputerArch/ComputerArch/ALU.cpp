@@ -56,6 +56,16 @@ std::bitset<16> ALU::execute()
 
         case ALU::SLT:
             result16 = std::bitset<16>((this->a16).to_ulong() - (this->b16).to_ulong());
+
+            if ((long)result16.to_ulong() < 0)
+            {
+                result16 = std::bitset<16>(0x0001);
+            }
+            else
+            {
+                result16 = std::bitset<16>(0x0000);
+            }
+
             break;
  
         case ALU::ANDI:
