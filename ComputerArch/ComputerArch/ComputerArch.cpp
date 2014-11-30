@@ -208,7 +208,7 @@ int main(int argc, char* argv[])
         im->setIMAddress(Pc.get()); 
 
         IFIDBuffer.setInstruction(im->getReadDataIM());
-        IFIDBuffer.setpc(++i);
+        IFIDBuffer.setpc(jumpMux.getOutput().to_ulong());
 
         /***** WHATS HAPPENING EACH TIME **********/
 

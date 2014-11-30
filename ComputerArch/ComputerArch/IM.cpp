@@ -16,12 +16,18 @@ const std::bitset<16> IM::machinecode[ARRAY_SIZE] = {
     std::bitset<16>(std::string("1100010101000100")),
     std::bitset<16>(std::string("0111001000011000"))
     */
-    //* Test 3: branch and jump
+    /* Test 3: branch and jump
     std::bitset<16>(std::string("1110000000000010")),
     std::bitset<16>(std::string("0010001101001000")),
     std::bitset<16>(std::string("1011010100000100")),
     std::bitset<16>(std::string("0010001101001000")),
     std::bitset<16>(std::string("1000010110010011"))
+    */
+    //* Test 4
+    std::bitset<16>(std::string("0101000001110001")),
+    std::bitset<16>(std::string("0111011001001000")),
+    std::bitset<16>(std::string("0101011001101001")),
+    std::bitset<16>(std::string("1101000000000111"))
     //*/
 };
 
