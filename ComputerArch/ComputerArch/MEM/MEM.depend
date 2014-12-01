@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1415633451 source:c:\users\samuel\documents\github\comarch\computerarch\computerarch\mem\main.cpp
+	<iostream>
+	<bitset>
+
