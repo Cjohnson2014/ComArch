@@ -50,6 +50,8 @@ public:
 	std::bitset<16> getRead2();
 	std::bitset<16> getSignEx();
     std::bitset<4> getRegDst();
+	void setMemRead(bool MemRead);
+	bool getMemRead();
 
 private:
 		bool ReadWrite;

@@ -91,7 +91,14 @@ void Buffer::setrs(std::bitset<4> rs)
 {
     this->rs = rs;
 }
-
+void Buffer::setMemRead(bool MemRead)
+{
+	this->MemRead=MemRead;
+}
+bool  Buffer::getMemRead()
+{
+		return Buffer::MemRead;
+}
 std::bitset<4> Buffer::getrs()
 {
     return this->rs;

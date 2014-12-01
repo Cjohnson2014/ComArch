@@ -111,6 +111,7 @@ void Control::update(std::bitset<4> opCode)
             this->regWrite = true;
             this->memToReg = true;
             this->aluSrc = true;
+			this->memRead=true;
 
             break;
 
