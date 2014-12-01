@@ -92,6 +92,8 @@ std::bitset<16> ALU::execute()
             }
             
             break;
+ 
+            
     }
 
     if (result16.to_ulong() == 0)

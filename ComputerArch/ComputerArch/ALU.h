@@ -20,7 +20,7 @@ class ALU {
             SRL = 10,
             ADDI = 11,
             BNE = 12,
-            SUBI = 13
+            SUBI = 13,
         };
 
         ~ALU();
