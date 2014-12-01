@@ -1,0 +1,110 @@
+# depslib dependency file v1.0
+1415675491 source:c:\users\samuel\documents\github\comarch\computerarch\computerarch\adder.cpp
+
+1416780603 source:c:\users\samuel\documents\github\comarch\computerarch\computerarch\adder4.cpp
+	"Adder4.h"
+
+1416780603 c:\users\samuel\documents\github\comarch\computerarch\computerarch\adder4.h
+	<bitset>
+
+1417415174 source:c:\users\samuel\documents\github\comarch\computerarch\computerarch\alu.cpp
+	"ALU.h"
+	<bitset>
+
+1417415174 c:\users\samuel\documents\github\comarch\computerarch\computerarch\alu.h
+	<bitset>
+
+1415675491 source:c:\users\samuel\documents\github\comarch\computerarch\computerarch\and.cpp
+
+1416780603 source:c:\users\samuel\documents\github\comarch\computerarch\computerarch\clock.cpp
+	"Clock.h"
+	<windows.h>
+	<unistd.h>
+
+1416780603 c:\users\samuel\documents\github\comarch\computerarch\computerarch\clock.h
+
+1417379074 source:c:\users\samuel\documents\github\comarch\computerarch\computerarch\idexbuff.cpp
+	"IdExBuff.h"
+
+1417379074 c:\users\samuel\documents\github\comarch\computerarch\computerarch\idexbuff.h
+	<bitset>
+
+1417379074 source:c:\users\samuel\documents\github\comarch\computerarch\computerarch\ifidbuffer.cpp
+	"IFIDBuffer.h"
+	<bitset>
+
+1417379074 c:\users\samuel\documents\github\comarch\computerarch\computerarch\ifidbuffer.h
+	<bitset>
+
+1416173444 source:c:\users\samuel\documents\github\comarch\computerarch\computerarch\memory.cpp
+	"Memory.h"
+	<bitset>
+
+1416173444 c:\users\samuel\documents\github\comarch\computerarch\computerarch\memory.h
+	<iostream>
+	<bitset>
+
+1417229406 source:c:\users\samuel\documents\github\comarch\computerarch\computerarch\mux.cpp
+	"Mux.h"
+
+1417229406 c:\users\samuel\documents\github\comarch\computerarch\computerarch\mux.h
+	<bitset>
+
+1417319328 source:c:\users\samuel\documents\github\comarch\computerarch\computerarch\pc.cpp
+	"Pc.h"
+	<bitset>
+	<string>
+
+1417319328 c:\users\samuel\documents\github\comarch\computerarch\computerarch\pc.h
+
+1415573227 source:c:\users\samuel\documents\github\comarch\computerarch\computerarch\stdafx.cpp
+
+1417231930 source:c:\users\samuel\documents\github\comarch\computerarch\computerarch\im.cpp
+	"IM.h"
+	<bitset>
+	<iostream>
+
+1417231985 c:\users\samuel\documents\github\comarch\computerarch\computerarch\im.h
+	<iostream>
+	<bitset>
+	<string>
+
+1417232055 source:c:\users\samuel\documents\github\comarch\computerarch\computerarch\registerfile.cpp
+	"RegisterFile.h"
+	<iostream>
+	<bitset>
+
+1417231384 c:\users\samuel\documents\github\comarch\computerarch\computerarch\registerfile.h
+	<iostream>
+	<bitset>
+
+1417231872 source:c:\users\samuel\documents\github\comarch\computerarch\computerarch\computerarch.cpp
+	<iostream>
+	<string>
+	<bitset>
+	"Pc.h"
+	"RegisterFile.h"
+	"IM.h"
+	"IFIDBuffer.h"
+	"IdExBuff.h"
+	"ALU.h"
+	"Control.h"
+	"Mux.h"
+
+1417229406 c:\users\samuel\documents\github\comarch\computerarch\computerarch\control.h
+	"ALU.h"
+	<bitset>
+
+1417319328 source:c:\users\samuel\documents\github\comarch\computerarch\computerarch\datamemory.cpp
+	"DataMemory.h"
+	<bitset>
+
+1417319328 c:\users\samuel\documents\github\comarch\computerarch\computerarch\datamemory.h
+	<bitset>
+
+1417415174 source:c:\users\samuel\documents\github\comarch\computerarch\computerarch\buffer.cpp
+	"Buffer.h"
+
+1417415174 c:\users\samuel\documents\github\comarch\computerarch\computerarch\buffer.h
+	<bitset>
+

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Compiler" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Compiler" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Compiler" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="../ALU.cpp" />
+		<Unit filename="../ALU.h" />
+		<Unit filename="../Adder.cpp" />
+		<Unit filename="../Adder.h" />
+		<Unit filename="../Adder4.cpp" />
+		<Unit filename="../Adder4.h" />
+		<Unit filename="../And.cpp" />
+		<Unit filename="../And.h" />
+		<Unit filename="../Buffer.cpp" />
+		<Unit filename="../Buffer.h" />
+		<Unit filename="../Clock.cpp" />
+		<Unit filename="../Clock.h" />
+		<Unit filename="../ComputerArch.cpp" />
+		<Unit filename="../Control.cpp" />
+		<Unit filename="../Control.h" />
+		<Unit filename="../DataMemory.cpp" />
+		<Unit filename="../DataMemory.h" />
+		<Unit filename="../IFIDBuffer.cpp" />
+		<Unit filename="../IFIDBuffer.h" />
+		<Unit filename="../IM.cpp" />
+		<Unit filename="../IM.h" />
+		<Unit filename="../IdExBuff.cpp" />
+		<Unit filename="../IdExBuff.h" />
+		<Unit filename="../Memory.cpp" />
+		<Unit filename="../Memory.h" />
+		<Unit filename="../Mux.cpp" />
+		<Unit filename="../Mux.h" />
+		<Unit filename="../Pc.cpp" />
+		<Unit filename="../Pc.h" />
+		<Unit filename="../RegisterFile.cpp" />
+		<Unit filename="../RegisterFile.h" />
+		<Unit filename="../stdafx.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

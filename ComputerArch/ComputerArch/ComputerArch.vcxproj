@@ -86,9 +86,12 @@
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="ComputerArch.cpp" />
     <ClCompile Include="Buffer.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="Control.cpp" />
     <ClCompile Include="DataMemory.cpp" />
     <ClCompile Include="IM.cpp" />
+=======
+>>>>>>> origin/master
     <ClCompile Include="Mux.cpp" />
     <ClCompile Include="Pc.cpp" />
     <ClCompile Include="RegisterFile.cpp" />
@@ -100,9 +103,12 @@
     <ClInclude Include="And.h" />
     <ClInclude Include="Clock.h" />
     <ClInclude Include="Buffer.h" />
+<<<<<<< HEAD
     <ClInclude Include="Control.h" />
     <ClInclude Include="DataMemory.h" />
     <ClInclude Include="IM.h" />
+=======
+>>>>>>> origin/master
     <ClInclude Include="Memory.h" />
     <ClInclude Include="Mux.h" />
     <ClInclude Include="Pc.h" />

@@ -109,8 +109,12 @@ int main(int argc, char* argv[])
             if (MEMWBBuffer.getMemtoReg())
             {
                 cout<<"rs 1"<<endl;
+<<<<<<< HEAD
 				IDEXBuffer.setRead1(MEMWBBuffer.getMemoryReadData().to_ulong());
 				cout<<"RS1 value "<<MEMWBBuffer.getMemoryReadData().to_ulong()<<endl;
+=======
+                IDEXBuffer.setRead1(dm.get(MEMWBBuffer.getMem.to_ulong()));
+>>>>>>> origin/master
             }
             else
             {
@@ -125,7 +129,6 @@ int main(int argc, char* argv[])
         {
 
             cout<<"mem flush rt: "<<endl;
-	
             if (MEMWBBuffer.getMemtoReg())
             {
                 cout<<"rt 1"<<endl;
@@ -172,7 +175,11 @@ int main(int argc, char* argv[])
         }
 
         memToRegMux.setInput0(MEMWBBuffer.getAluresult());
+<<<<<<< HEAD
         memToRegMux.setInput1(MEMWBBuffer.getMemoryReadData().to_ulong());
+=======
+        memToRegMux.setInput1();
+>>>>>>> origin/master
         memToRegMux.setControlLine(MEMWBBuffer.getMemtoReg());
 
         if (MEMWBBuffer.getRegwrite())
@@ -319,7 +326,7 @@ int main(int argc, char* argv[])
         IDEXBuffer.setMemtoReg(control.getMemToReg());
         IDEXBuffer.setMemWrite(control.getMemWrite());
         IDEXBuffer.setpc(IFIDBuffer.getpc());
-		IDEXBuffer.setMemRead(control.getMemRead());
+
         IDEXBuffer.setrs(rf->getRs());
         IDEXBuffer.setrt(rf->getRt());
         // IDEXBuffer.setMemoryRead(control.getMemRead());

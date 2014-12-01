@@ -45,6 +45,7 @@
     <ClCompile Include="Buffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="IM.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -57,6 +58,8 @@
     <ClCompile Include="DataMemory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+=======
+>>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pc.h">
@@ -89,6 +92,7 @@
     <ClInclude Include="Buffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="IM.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -98,5 +102,7 @@
     <ClInclude Include="DataMemory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+=======
+>>>>>>> origin/master
   </ItemGroup>
 </Project>
