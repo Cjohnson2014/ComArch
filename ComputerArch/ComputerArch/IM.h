@@ -5,7 +5,7 @@
 #include <bitset>
 #include <string>
 
-#define ARRAY_SIZE 14
+#define ARRAY_SIZE 40
 
 class IM {
 

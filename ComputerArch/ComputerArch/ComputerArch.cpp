@@ -91,23 +91,26 @@ int main(int argc, char* argv[])
     Pc.set(i);
 
 
-    for (int j = 0; j < 11; j++)
+    for (int j = 0; j < 25; j++)
     {
 
         /*
          * Forwarding
          */
-
+		cout<<"Regwrite:"<<MEMWBBuffer.getRegwrite()<<endl;
+		cout<<"MemtoReg:"<<MEMWBBuffer.getMemtoReg()<<endl;
+		//cout<<Da
         if (MEMWBBuffer.getRegwrite()
                 && MEMWBBuffer.getRegDst() != 0
                 && MEMWBBuffer.getRegDst() == IDEXBuffer.getrs())
         {
-
+			
             cout<<"mem flush rs: "<<endl;
             if (MEMWBBuffer.getMemtoReg())
             {
                 cout<<"rs 1"<<endl;
-				IDEXBuffer.setRead1(dm.get(MEMWBBuffer.getMemoryReadData().to_ulong()));
+				IDEXBuffer.setRead1(MEMWBBuffer.getMemoryReadData().to_ulong());
+				cout<<"RS1 value "<<MEMWBBuffer.getMemoryReadData().to_ulong()<<endl;
             }
             else
             {
@@ -126,7 +129,9 @@ int main(int argc, char* argv[])
             if (MEMWBBuffer.getMemtoReg())
             {
                 cout<<"rt 1"<<endl;
-                IDEXBuffer.setRead2(dm.get(MEMWBBuffer.getAluresult().to_ulong()));
+				IDEXBuffer.setRead2(dm.get(MEMWBBuffer.getMemoryReadData().to_ulong()));
+			//	cout<<"RT Value :"<<dm.get(MEMWBBuffer.getMemoryReadData().to_ulong())<<endl;
+;
             }
             else
             {
@@ -167,14 +172,14 @@ int main(int argc, char* argv[])
         }
 
         memToRegMux.setInput0(MEMWBBuffer.getAluresult());
-        memToRegMux.setInput1(dm.get(MEMWBBuffer.getMemoryReadData().to_ulong()));
+        memToRegMux.setInput1(MEMWBBuffer.getMemoryReadData().to_ulong());
         memToRegMux.setControlLine(MEMWBBuffer.getMemtoReg());
 
         if (MEMWBBuffer.getRegwrite())
         {
             rf->setRegisterValue(MEMWBBuffer.getRegDst().to_ulong(), memToRegMux.getOutput());
-        }
-
+			cout <<"writeback memory read data"<< memToRegMux.getOutput() <<endl;
+		}
         /*
          * MEM Stage
          */
@@ -193,14 +198,15 @@ int main(int argc, char* argv[])
 
         dm.setControlLines(EXMEMBuffer.getMemWrite(), control.getMemRead());
         dm.set((EXMEMBuffer.getAluresult()).to_ulong(), EXMEMBuffer.getRead2());
-
+		cout<<"DataMemory: "<<dm.get(EXMEMBuffer.getAluresult().to_ulong())<<endl;
         MEMWBBuffer.setMemtoReg(EXMEMBuffer.getMemtoReg());
         MEMWBBuffer.setAluResult(EXMEMBuffer.getAluresult());
-        MEMWBBuffer.setMemoryRead(memReadLocation2);
+        MEMWBBuffer.setMemoryRead(dm.get(EXMEMBuffer.getAluresult().to_ulong()));
         MEMWBBuffer.setRegDst(EXMEMBuffer.getRegDst());
         MEMWBBuffer.setrs(EXMEMBuffer.getrs());
         MEMWBBuffer.setrt(EXMEMBuffer.getrt());
         MEMWBBuffer.setRegwrite(EXMEMBuffer.getRegwrite());
+		cout<<"DateMemoryBuffer"<<MEMWBBuffer.getMemoryReadData()<<endl;
 
         /*
          * EX Stage
@@ -209,6 +215,7 @@ int main(int argc, char* argv[])
         aluSrcMux.setInput0(IDEXBuffer.getRead2());
         aluSrcMux.setInput1(IDEXBuffer.getSignEx());
         aluSrcMux.setControlLine(IDEXBuffer.getAluSrc());
+		cout<<"AluSrcMux"<<IDEXBuffer.getAluSrc()<<endl;
         aluResult = 0;
         aluResult = alu->setOp(IDEXBuffer.getAluOp())
            ->setInput(IDEXBuffer.getRead1(), aluSrcMux.getOutput())
@@ -220,6 +227,7 @@ int main(int argc, char* argv[])
 
         int shiftLeft = 0;
         int addResult = IDEXBuffer.getpc();
+		cout<<"IDEXbuffer getpc; "<<addResult<<endl;
         int branch = 0;
 
         /*
@@ -234,7 +242,11 @@ int main(int argc, char* argv[])
         shiftLeft = (IDEXBuffer.getSignEx()).to_ulong() << 0;
         addResult = IDEXBuffer.getpc() + shiftLeft;
         branch = IDEXBuffer.getBranch() & aluZeroBit;
-
+		if (branch)
+		{
+			cout<<"getBranch:"<<IDEXBuffer.getBranch()<<endl;
+			cout<<"ALUZero:"<<aluZeroBit<<endl;
+		}
         EXMEMBuffer.setAluResult(aluResult);
         EXMEMBuffer.setRead2(IDEXBuffer.getRead2());
         EXMEMBuffer.setMemWrite(IDEXBuffer.getMemWrite());
@@ -247,12 +259,14 @@ int main(int argc, char* argv[])
         EXMEMBuffer.setJump(IDEXBuffer.getJump());
         EXMEMBuffer.setBranch(branch);
         EXMEMBuffer.setAluOp(IDEXBuffer.getAluOp());
+		EXMEMBuffer.setMemRead(IDEXBuffer.getMemRead());
 
 
 
-        if (branch || IDEXBuffer.getJump())
+		if ((branch && EXMEMBuffer.getAluZero()== 1) || IDEXBuffer.getJump() )
         {
             IFIDBuffer.setInstruction(bitset<16>(0x0000));
+			cout << "Branch taken";
         }
 
         /*
@@ -334,8 +348,11 @@ int main(int argc, char* argv[])
         cout<<"c check: "<<EXMEMBuffer.getpc()<<endl;
 
         pcSrcMux.setInput0(++i);
-        pcSrcMux.setInput1(EXMEMBuffer.getpc());
+		pcSrcMux.setInput1(addResult);
+		cout<< "i:"<<i<<endl;
+		cout<<"addResult"<<addResult<<endl;
         pcSrcMux.setControlLine(EXMEMBuffer.getBranch());
+		cout<<"PcSrcMux "<<EXMEMBuffer.getBranch()<<endl;
 
         if (EXMEMBuffer.getBranch() && EXMEMBuffer.getAluOp() != ALU::BNE){
             cout<<"if"<<endl;
@@ -343,18 +360,20 @@ int main(int argc, char* argv[])
         }
 
         jumpMux.setInput0(pcSrcMux.getOutput());
+		cout<<shiftLeft<<endl;
         jumpMux.setInput1(shiftLeft);
         jumpMux.setControlLine(EXMEMBuffer.getJump());
-
+		cout<<EXMEMBuffer.getJump()<<endl;
         Pc.set((jumpMux.getOutput().to_ulong()));
-
+		cout<<jumpMux.getOutput().to_ulong()<<endl;
+		i=Pc.get();
         im->setIMAddress(Pc.get()); 
 
         IFIDBuffer.setInstruction(im->getReadDataIM());
         IFIDBuffer.setpc(jumpMux.getOutput().to_ulong());
 
         /***** WHATS HAPPENING EACH TIME **********/
-
+		
         cout << endl;
         cout << "\033[1;33m*********************\033[0m" << endl;
 
@@ -487,12 +506,13 @@ int main(int argc, char* argv[])
             << (long)(dm.get((rf->getRegisterValue(RegisterFile::$a0)).to_ulong() + 4).to_ulong())
             << "\033[0m"
             << endl;
-
+		char a='a';
+		cin>> a;
     }
 
     
     cout << endl << endl;
-
+system("pause");
     return 0;
 }
 
