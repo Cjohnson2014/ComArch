@@ -38,7 +38,6 @@ public:
     std::bitset<4> getrt();
     std::bitset<4> getrs();
 
-
     int getpc();
 	bool getAluSrc();
 	bool getJump();
