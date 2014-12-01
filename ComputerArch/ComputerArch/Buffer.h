@@ -32,6 +32,13 @@ public:
     void setRegDst(std::bitset<4> rd);
     void setpc(int pc);
 
+    void setrt(std::bitset<4> rt);
+    void setrs(std::bitset<4> rs);
+
+    std::bitset<4> getrt();
+    std::bitset<4> getrs();
+
+
     int getpc();
 	bool getAluSrc();
 	bool getJump();
@@ -66,6 +73,8 @@ private:
 		std::bitset<16>memReadData;
 
         std::bitset<4> rd;
+        std::bitset<4> rt;
+        std::bitset<4> rs;
         int pc;
 };
 

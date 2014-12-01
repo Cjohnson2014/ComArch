@@ -91,8 +91,41 @@ int main(int argc, char* argv[])
     Pc.set(i);
 
 
-    for (int j = 0; j < 9; j++)
+    for (int j = 0; j < 11; j++)
     {
+
+        /*
+         * Forwarding
+         */
+
+        if (MEMWBBuffer.getRegwrite()
+                && MEMWBBuffer.getRegDst() != 0
+                && MEMWBBuffer.getRegDst() == IDEXBuffer.getrs())
+        {
+            IDEXBuffer.setRead1(MEMWBBuffer.getAluresult());
+        }
+
+        if (MEMWBBuffer.getRegwrite()
+                && MEMWBBuffer.getRegDst() != 0
+                && MEMWBBuffer.getRegDst() == IDEXBuffer.getrt())
+        {
+            IDEXBuffer.setRead2(MEMWBBuffer.getAluresult());
+        }
+
+        if (EXMEMBuffer.getRegwrite()
+                && EXMEMBuffer.getRegDst() != 0
+                && EXMEMBuffer.getRegDst() == IDEXBuffer.getrs())
+        {
+            IDEXBuffer.setRead1(EXMEMBuffer.getAluresult());
+        }
+
+        if (EXMEMBuffer.getRegwrite()
+                && EXMEMBuffer.getRegDst() != 0
+                && EXMEMBuffer.getRegDst() == IDEXBuffer.getrt())
+        {
+            IDEXBuffer.setRead2(EXMEMBuffer.getAluresult());
+        }
+
 
         /*
          * WB Stage
@@ -102,7 +135,10 @@ int main(int argc, char* argv[])
         memToRegMux.setInput1(dm.get((MEMWBBuffer.getAluresult()).to_ulong()));
         memToRegMux.setControlLine(MEMWBBuffer.getMemtoReg());
 
-        rf->setRegisterValue(MEMWBBuffer.getRegDst().to_ulong(), memToRegMux.getOutput());
+        if (MEMWBBuffer.getRegwrite())
+        {
+            rf->setRegisterValue(MEMWBBuffer.getRegDst().to_ulong(), memToRegMux.getOutput());
+        }
 
         /*
          * MEM Stage
@@ -115,6 +151,9 @@ int main(int argc, char* argv[])
         MEMWBBuffer.setAluResult(EXMEMBuffer.getAluresult());
         MEMWBBuffer.setMemoryRead(dm.get((EXMEMBuffer.getAluresult()).to_ulong()));
         MEMWBBuffer.setRegDst(EXMEMBuffer.getRegDst());
+        MEMWBBuffer.setrs(EXMEMBuffer.getrs());
+        MEMWBBuffer.setrt(EXMEMBuffer.getrt());
+        MEMWBBuffer.setRegwrite(EXMEMBuffer.getRegwrite());
 
         /*
          * EX Stage
@@ -140,7 +179,6 @@ int main(int argc, char* argv[])
         addResult = IDEXBuffer.getpc() + shiftLeft;
         branch = IDEXBuffer.getBranch() & aluZeroBit;
 
-        cout<<"idexpc: "<<IDEXBuffer.getpc() <<endl;
         if (branch || IDEXBuffer.getJump())
         {
             IFIDBuffer.setInstruction(bitset<16>(0x0000));
@@ -150,8 +188,12 @@ int main(int argc, char* argv[])
         EXMEMBuffer.setRead2(IDEXBuffer.getRead2());
         EXMEMBuffer.setMemWrite(IDEXBuffer.getMemWrite());
         EXMEMBuffer.setMemtoReg(IDEXBuffer.getMemtoReg());
-        EXMEMBuffer.setRegDst(IDEXBuffer.getRegDst());
         EXMEMBuffer.setpc(addResult);
+        EXMEMBuffer.setRegDst(IDEXBuffer.getRegDst());
+        EXMEMBuffer.setrt(IDEXBuffer.getrt());
+        EXMEMBuffer.setrs(IDEXBuffer.getrs());
+        EXMEMBuffer.setRegwrite(IDEXBuffer.getRegwrite());
+
 
         /*
          * ID Stage
@@ -194,6 +236,7 @@ int main(int argc, char* argv[])
         IDEXBuffer.setSignEx(rf->getSignExtend());
         IDEXBuffer.setRead1(rf->getRead1());
         IDEXBuffer.setRead2(rf->getRead2());
+        IDEXBuffer.setRegDst(rf->getRd());
         IDEXBuffer.setJump(control.getJump());
         IDEXBuffer.setBranch(control.getBranch());
         IDEXBuffer.setRegwrite(control.getRegWrite());
@@ -201,9 +244,18 @@ int main(int argc, char* argv[])
         IDEXBuffer.setAluSrc(control.getAluSrc());
         IDEXBuffer.setMemtoReg(control.getMemToReg());
         IDEXBuffer.setMemWrite(control.getMemWrite());
-        IDEXBuffer.setRegDst(rf->getRd());
         IDEXBuffer.setpc(IFIDBuffer.getpc());
+
+        IDEXBuffer.setrs(rf->getRs());
+        IDEXBuffer.setrt(rf->getRt());
         // IDEXBuffer.setMemoryRead(control.getMemRead());
+
+        if (control.getAluOp() == 13)
+        {
+            im->setIMData(i, bitset<16>(0x0000));
+            i = i- 2;
+            cout << "test" << endl;
+        }
 
         /*
          * IF Stage

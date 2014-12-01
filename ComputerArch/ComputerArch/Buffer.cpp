@@ -23,6 +23,8 @@ Buffer::Buffer(void)
     this->AluZero = 0;
     this->AluResult = 0;
     this->Branch = 0;
+    this->rs = 0;
+    this->rt = 0;
 }
 
 
@@ -80,6 +82,26 @@ void Buffer::setpc(int pc)
     this->pc = pc;
 }
 
+void Buffer::setrt(std::bitset<4> rt)
+{
+    this->rt = rt;
+}
+
+void Buffer::setrs(std::bitset<4> rs)
+{
+    this->rs = rs;
+}
+
+std::bitset<4> Buffer::getrs()
+{
+    return this->rs;
+}
+
+std::bitset<4> Buffer::getrt()
+{
+    return this->rt;
+}
+
 int Buffer::getpc()
 {
     return this->pc;
@@ -89,6 +111,7 @@ std::bitset<4> Buffer::getRegDst()
 {
     return this->rd;
 }
+
 
 
 bool Buffer:: getAluSrc(){

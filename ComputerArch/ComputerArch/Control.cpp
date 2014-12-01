@@ -68,6 +68,7 @@ void Control::update(std::bitset<4> opCode)
 
         case 7: // set less than
             this->aluOp = ALU::SLT;
+            this->regWrite = true;
             this->regDst = true;
 
             break;

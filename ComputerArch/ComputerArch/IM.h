@@ -5,13 +5,13 @@
 #include <bitset>
 #include <string>
 
-#define ARRAY_SIZE 7
+#define ARRAY_SIZE 14
 
 class IM {
 
     public:
 
-        static const std::bitset<16> machinecode[ARRAY_SIZE];
+        static std::bitset<16> machinecode[ARRAY_SIZE];
 
         IM(std::bitset<16> init);
         ~IM();
@@ -23,6 +23,8 @@ class IM {
         bool getIMRead();
 
         std::bitset<16> getReadDataIM();
+
+        void setIMData(int location, std::bitset<16> imData);
 
     private:
 
