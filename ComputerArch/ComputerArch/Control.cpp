@@ -1,6 +1,6 @@
 #include "Control.h"
 #include "ALU.h"
-#include<iostream>
+
 #include <bitset>
 #include <string>
 
@@ -90,11 +90,13 @@ void Control::update(std::bitset<4> opCode)
         case 10: // branch equal
             this->aluOp = ALU::SUB;
             this->branch = true;
+
             break;
 
         case 11: // branch not equal
             this->aluOp = ALU::BNE;
             this->branch = true;
+
             break;
 
         case 12: // store word
@@ -114,6 +116,7 @@ void Control::update(std::bitset<4> opCode)
 
         case 14: // jump
             this->jump = true;
+
             break;
  
         case 15: // sub immediate

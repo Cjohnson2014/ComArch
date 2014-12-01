@@ -81,14 +81,12 @@
   <ItemGroup>
     <ClCompile Include="Adder.cpp" />
     <ClCompile Include="Adder4.cpp" />
-    <ClCompile Include="ALU.cpp" />
     <ClCompile Include="And.cpp" />
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="ComputerArch.cpp" />
     <ClCompile Include="Buffer.cpp" />
 <<<<<<< HEAD
     <ClCompile Include="Control.cpp" />
-    <ClCompile Include="DataMemory.cpp" />
     <ClCompile Include="IM.cpp" />
 =======
 >>>>>>> origin/master
@@ -105,7 +103,6 @@
     <ClInclude Include="Buffer.h" />
 <<<<<<< HEAD
     <ClInclude Include="Control.h" />
-    <ClInclude Include="DataMemory.h" />
     <ClInclude Include="IM.h" />
 =======
 >>>>>>> origin/master
