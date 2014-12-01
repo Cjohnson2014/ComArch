@@ -20,17 +20,12 @@ std::bitset<16> IM::machinecode[ARRAY_SIZE] = {
     */
 
     /* Test 3: branch and jump
-    std::bitset<16>(std::string("1110000000000101")),
-    std::bitset<16>(std::string("0010001101001000")),
-    std::bitset<16>(std::string("0010001101001000")),
-    std::bitset<16>(std::string("0010001101001000")),
+    std::bitset<16>(std::string("1110000000000010")),
     std::bitset<16>(std::string("0010001101001000")),
     std::bitset<16>(std::string("1011010100000010")),
     std::bitset<16>(std::string("0010001101001000")),
-    //std::bitset<16>(std::string("0010001101001000")),
-    //std::bitset<16>(std::string("0010001101001000")),
     std::bitset<16>(std::string("1000010110010011"))
-    //*/
+    */
 
     /* Test 4
     std::bitset<16>(std::string("0101000001110001")),
@@ -50,17 +45,6 @@ std::bitset<16> IM::machinecode[ARRAY_SIZE] = {
     std::bitset<16>(std::string("0000000100111000")),
     std::bitset<16>(std::string("1101010110010010")),
     std::bitset<16>(std::string("0001100101111010")),
-    //*/
-
-    /* Test 7: control and data hazards, branch, probably need one stall for branch
-    std::bitset<16>(std::string("0000010101010010")),
-    std::bitset<16>(std::string("1010010100011001")),
-    std::bitset<16>(std::string("0000001000100010")),
-    std::bitset<16>(std::string("1010001000010011")),
-    std::bitset<16>(std::string("1001001110010001")),
-    std::bitset<16>(std::string("1001001110010001")),
-    //std::bitset<16>(std::string("1001001110010001")),
-    std::bitset<16>(std::string("0000000000000000"))
     //*/
 };
 

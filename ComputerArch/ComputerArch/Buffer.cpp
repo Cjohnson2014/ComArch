@@ -131,7 +131,7 @@ int  Buffer:: getAluOp()
 {return AluOp;}
 std::bitset<16> Buffer:: getRead1()
 {return this->Read1;}
-std::bitset<16> Buffer:: getRead2()
+std::bitset<16> Buffer::getRead2()
 {return this->Read2;}
 std::bitset<16> Buffer:: getSignEx()
 {return SignEx;}
